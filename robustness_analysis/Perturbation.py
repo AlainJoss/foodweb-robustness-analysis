@@ -1,19 +1,11 @@
 from DiGraph import DiGraph
-from BucketContainer import BucketContainer
-import random
+from Simulation import AttackStrategy
 
 class Perturbation():
-    def __init__(self, graph: DiGraph) -> None:
+    def __init__(self, graph: DiGraph, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list =[]) -> None:
         self.graph = graph
-        self.bucket_container = BucketContainer()
-
-    def set_lost_habitats(self, lost_habitats: list) -> None:
-        self.lost_habitats = lost_habitats
-
-    def choose_bucket(self) -> object:
-        return random.choices
+        self.graph.create_buckets(attack_strategy, threatened_habitats, threatened_species)
     
     def run(self) -> None:
-        bucket = self.choose_bucket()
-        node = bucket.
+        self.result = None
 
