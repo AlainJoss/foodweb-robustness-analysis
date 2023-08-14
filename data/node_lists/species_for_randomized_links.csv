@@ -1,0 +1,378 @@
+Diet_Range,Taxon,Zone,Habitat,Diet_Name,Diet_Rank
+Generalised,Atypus affinis,On ground or in leaf litter,Forest; Grassland; Shrubland,Insecta,Class
+Generalised,Metellina mengei,On ground or in leaf litter,Cropland; Forest; Grassland; Wetland,Insecta,Class
+Generalised,Ero aphana,On vegetation,Forest; Grassland,Araneae,Order
+Generalised,Ero cambridgei,On vegetation,Forest; Grassland,Araneae,Order
+Generalised,Ero tuberculata,On vegetation,Forest; Grassland,Araneae,Order
+Generalised,Oxyopes ramosus,On vegetation,Forest,Araneae,Order
+Generalised,Segestria florentina,In ground; In vegetation; On ground or in leaf litter,Forest,Insecta,Class
+Generalised,Zora parallela,On ground or in leaf litter; On vegetation,Grassland,Insecta,Class
+Generalised,Euscorpius balearicus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius beroni,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius gamma,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius hadzii,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius koschewnikowi,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius mingrelicus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius naupliensis,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius sicanus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Euscorpius tergestinus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Geophilus carpophagus,In ground; In vegetation; On ground or in leaf litter,Cropland; Forest; Grassland; Shrubland; Urban; Wetland,Arthropoda,Phylum
+Generalised,Geophilus linearis,In ground; In vegetation; On ground or in leaf litter,Cropland; Forest; Grassland; Shrubland; Urban; Wetland,Arthropoda,Phylum
+Generalised,Cryptops anomalans,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Cryptops parisi,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland,Arthropoda,Phylum
+Generalised,Periplaneta americana,On ground or in leaf litter,Cropland; Forest; Grassland; Shrubland; Urban; Wetland,Viridiplantae,Kingdom
+Generalised,Anostirus pseudosulphuripennis,In ground,Forest; Grassland,Insecta,Class
+Generalised,Anostirus reissi,In ground,Forest; Grassland,Insecta,Class
+Generalised,Anostirus sulphuripennis,In ground,Forest; Grassland,Insecta,Class
+Generalised,Haliplus mucronatus,In water,Water; Wetland,Insecta,Class
+Generalised,Peltodytes rotundatus,In water,Water; Wetland,Insecta,Class
+Generalised,Lamprohiza splendidula,On vegetation,Cropland; Forest; Grassland; Urban,Gastropoda,Class
+Generalised,Lampyris noctiluca,On vegetation,Cropland; Forest; Grassland; Urban,Gastropoda,Class
+Generalised,Luciola italica,On vegetation,Cropland,Gastropoda,Class
+Generalised,Luciola lusitanica,On vegetation,Cropland,Gastropoda,Class
+Generalised,Meloe rugosus,On ground or in leaf litter,Forest; Grassland; Wetland,Viridiplantae,Kingdom
+Generalised,Axinotarsus longicornis,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Charopus concolor,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Charopus docilis,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Charopus flavipes,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Charopus madidus,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Charopus pallipes,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Clanoptilus affinis,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Clanoptilus emarginatus,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Clanoptilus geniculatus,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Clanoptilus marginellus,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Cyrtosus ovalis,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Danacea ambigua,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea aurichalcea,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea denticollis,On vegetation,Forest,Insecta,Class
+Generalised,Danacea iners,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea marginata,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea montivaga,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea morosa,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea murina,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea nigripalpis,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Danacea nigritarsis,On vegetation,Forest; Grassland; Urban,Insecta,Class
+Generalised,Danacea pallipes,On vegetation,Forest; Grassland; Rock,Insecta,Class
+Generalised,Danacea wittmeri,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Ebaeus battonii,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Ebaeus collaris,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Ebaeus flavicornis,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Ebaeus gibbus,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Ebaeus rufipes,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Ebaeus thoracicus,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Enicopus hirtus,On vegetation,Forest,Insecta,Class
+Generalised,Enicopus pilosus,On vegetation,Forest,Insecta,Class
+Generalised,Hypebaeus albifrons,On vegetation,Forest,Insecta,Class
+Generalised,Hypebaeus flavicollis,On vegetation,Forest,Insecta,Class
+Generalised,Micrinus heteromorphus,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Micrinus inornatus,On vegetation,Forest; Grassland,Insecta,Class
+Generalised,Nepachys cardiacae,On vegetation,Forest; Grassland; Urban; Wetland,Insecta,Class
+Generalised,Psilothrix aureola,On vegetation,Cropland; Grassland,Insecta,Class
+Generalised,Sphinginus coarctatus,On vegetation,Forest,Insecta,Class
+Generalised,Troglops albicans,On vegetation,Forest; Grassland; Ruderal,Insecta,Class
+Generalised,Troglops cephalotes,On vegetation,Forest; Grassland; Ruderal,Insecta,Class
+Generalised,Troglops silo,On vegetation,Forest; Grassland; Ruderal,Insecta,Class
+Generalised,Amphimallon assimile,In ground,Forest; Grassland; Ruderal,Viridiplantae,Kingdom
+Generalised,Amphimallon atrum,In ground,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Amphimallon burmeisteri,In ground,Forest; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Amphimallon fuscum,In ground,Forest; Grassland; Ruderal,Viridiplantae,Kingdom
+Generalised,Amphimallon majale,In ground,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Amphimallon ochraceum,In ground,Forest; Grassland; Ruderal,Viridiplantae,Kingdom
+Generalised,Amphimallon pini,In ground,Forest; Grassland; Ruderal,Viridiplantae,Kingdom
+Generalised,Amphimallon ruficorne,In ground,Grassland; Ruderal,Viridiplantae,Kingdom
+Generalised,Neagolius bilimeckii,In ground; In vegetation; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Neagolius montanus,In ground; In vegetation; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Neagolius pollicatus,In ground; In vegetation; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Neagolius praecox,In ground; In vegetation; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Neagolius schlumbergeri,In ground; In vegetation; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Accanthopus velikensis,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Alphitobius diaperinus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Alphitobius laevigatus,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Asida sabulosa,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Bius thoracicus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Corticeus bicoloroides,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Urban,Viridiplantae,Kingdom
+Generalised,Corticeus versipellis,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Urban,Viridiplantae,Kingdom
+Generalised,Crypticus quisquilius,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Dendarus coarcticollis,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Diaclina fagi,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Gonocephalum pygmaeum,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Gonodera luperus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Gonodera metallica,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Hymenalia rufipes,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Grassland; Rock; Urban,Viridiplantae,Kingdom
+Generalised,Isomira costessii,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Isomira hypocrita,On vegetation,Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Isomira icteropa,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Isomira marcida,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Isomira testacea,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Isomira umbellatarum,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Lagria rugosula,On ground or in leaf litter; On vegetation,Cropland; Forest; Urban,Viridiplantae,Kingdom
+Generalised,Lamprocrypticus alpinus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Latheticus oryzae,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Leichenum pictum,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Megischia curvipes,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Melanimon tibialis,In ground; In vegetation; On ground or in leaf litter; On vegetation,Rock,Viridiplantae,Kingdom
+Generalised,Metaclisa azurea,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Mycetochara maura,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Mycetochara pygmaea,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Mycetochara quadrimaculata,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Myrmechixenus picinus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Myrmechixenus subterraneus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Myrmechixenus vaporariorum,In ground; In vegetation; On ground or in leaf litter; On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Nalassus convexus,On vegetation,Forest; Grassland; Rock,Viridiplantae,Kingdom
+Generalised,Nalassus dryadophilus,On vegetation,Forest; Urban,Viridiplantae,Kingdom
+Generalised,Nalassus ecoffeti,On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Omophlus picipes,On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Omophlus rugosicollis,On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Opatrum riparium,On ground or in leaf litter,Cropland; Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Palorus ratzeburgii,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Palorus subdepressus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Pedinus femoralis,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Pentaphyllus chrysomeloides,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Phtora crenata,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Platydema dejeanii,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Platydema europaea,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Platydema violacea,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest,Viridiplantae,Kingdom
+Generalised,Prionychus fairmairii,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Probaticus ebeninus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Scaphidema metallicum,In ground; In vegetation; On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Acletoxenus formosus,In ground; In vegetation; On ground or in leaf litter; On vegetation,Cropland,Hemiptera,Order
+Generalised,Herina germinationis,On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Herina parva,On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Elatophilus stigmatellus,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Scoloposcelis obscurella,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Temnostethus longirostris,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Temnostethus reduvinus,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Xylocoris formicetorum,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Xylocoris galactinus,On vegetation,Cropland,Arthropoda,Phylum
+Generalised,Neophilaenus modestus,On vegetation,Wetland,Viridiplantae,Kingdom
+Generalised,Gerris argentatus,On ground or in leaf litter,Water; Wetland,Arthropoda,Phylum
+Generalised,Hebrus pusillus,In water; On vegetation,Water,Arthropoda,Phylum
+Generalised,Hebrus ruficeps,In water; On vegetation,Water,Arthropoda,Phylum
+Generalised,Mesovelia furcata,On ground or in leaf litter,Water; Wetland,Arthropoda,Phylum
+Generalised,Loricula exilis,On vegetation,Forest,Arthropoda,Phylum
+Generalised,Plea minutissima,On ground or in leaf litter,Wetland,Arthropoda,Phylum
+Generalised,Aphanus rolandri,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Emblethis proximus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Paraparomius leptopoides,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Piezoscelis staphylinus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Raglius confusus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Raglius pineti,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Rhyparochromus phoeniceus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Scolopostethus patruelis,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Scolopostethus puberulus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Taphropeltus andrei,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Taphropeltus hamulatus,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Thaumastopus marginicollis,On vegetation,Forest; Shrubland,Viridiplantae,Kingdom
+Generalised,Chartoscirta cocksii,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Chartoscirta elegantula,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Macrosaldula scotica,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Macrosaldula variabilis,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Salda henschii,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Salda littoralis,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Salda muelleri,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Teloleuca pellucens,On vegetation,Water; Wetland,Arthropoda,Phylum
+Generalised,Miscophus bicolor,On ground or in leaf litter,Rock; Ruderal,Araneae,Order
+Generalised,Arctia flavia,On vegetation,Grassland; Rock,Viridiplantae,Kingdom
+Generalised,Polypogon gryphalis,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Simplicia rectalis,In air; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Generalised,Zanclognatha lunalis,In air; On ground or in leaf litter; On vegetation,Cropland; Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Zanclognatha zelleralis,In air; On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Thecagaster bidentata,In air; In water,Forest; Grassland; Water; Wetland,Arthropoda,Phylum
+Generalised,Epitheca bimaculata,In air; In water,Grassland; Water; Wetland,Arthropoda,Phylum
+Generalised,Oxygastra curtisii,In air; In water,Forest; Grassland; Water,Arthropoda,Phylum
+Generalised,Sympecma paedisca,In air; In water,Forest; Grassland; Water; Wetland,Arthropoda,Phylum
+Generalised,Odontopodisma decipiens,On ground or in leaf litter; On vegetation,Forest; Grassland; Rock; Ruderal,Viridiplantae,Kingdom
+Generalised,Schistocerca gregaria,On ground or in leaf litter; On vegetation,Urban,Viridiplantae,Kingdom
+Generalised,Acheta domesticus,In ground; In vegetation; On ground or in leaf litter,Cropland; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Eumodicogryllus bordigalensis,In ground; In vegetation; On ground or in leaf litter,Cropland; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Gryllomorpha dalmatina,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Tachycines asynamorus,On ground or in leaf litter; On vegetation,Ruderal,Viridiplantae,Kingdom
+Generalised,Troglophilus cavicola,On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Odontopodisma decipiens,On ground or in leaf litter; On vegetation,Forest; Grassland; Rock; Ruderal,Arthropoda,Phylum
+Generalised,Schistocerca gregaria,On ground or in leaf litter; On vegetation,Urban,Arthropoda,Phylum
+Generalised,Acheta domesticus,In ground; In vegetation; On ground or in leaf litter,Cropland; Grassland; Ruderal; Urban,Arthropoda,Phylum
+Generalised,Eumodicogryllus bordigalensis,In ground; In vegetation; On ground or in leaf litter,Cropland; Grassland; Ruderal; Urban,Arthropoda,Phylum
+Generalised,Gryllomorpha dalmatina,In ground; In vegetation; On ground or in leaf litter,Forest; Grassland; Urban,Arthropoda,Phylum
+Generalised,Tachycines asynamorus,On ground or in leaf litter; On vegetation,Ruderal,Arthropoda,Phylum
+Generalised,Troglophilus cavicola,On ground or in leaf litter; On vegetation,Forest; Grassland,Arthropoda,Phylum
+Generalised,Tetrix ceperoi,On ground or in leaf litter; On vegetation,Forest; Ruderal; Water; Wetland,Viridiplantae,Kingdom
+Generalised,Tetrix tuerki,On ground or in leaf litter; On vegetation,Forest; Rock; Water,Viridiplantae,Kingdom
+Generalised,Aeolothrips fasciatus,On vegetation,Grassland,Thysanoptera,Order
+Generalised,Bombina variegata,In water; On ground or in leaf litter,Cropland; Forest; Grassland; Rock; Ruderal; Shrubland; Urban; Water; Wetland,Arthropoda,Phylum
+Generalised,Hyla intermedia,In water; On vegetation,Forest; Grassland; Water; Wetland,Arthropoda,Phylum
+Generalised,Pelobates fuscus,In water; On ground or in leaf litter,Water; Wetland,Arthropoda,Phylum
+Generalised,Salamandra atra,On ground or in leaf litter,Forest; Grassland; Rock; Shrubland; Urban; Wetland,Arthropoda,Phylum
+Generalised,Glareola nordmanni,In air; On ground or in leaf litter,Water,Arthropoda,Phylum
+Generalised,Acrocephalus paludicola,In air; On vegetation,Cropland; Forest; Grassland; Water; Wetland,Arthropoda,Phylum
+Generalised,Phylloscopus humei,In vegetation; On vegetation,Cropland; Forest; Grassland; Urban; Water,Insecta,Class
+Generalised,Phylloscopus ibericus,In vegetation; On vegetation,Cropland; Forest; Grassland; Urban; Water,Insecta,Class
+Generalised,Phylloscopus tristis,In vegetation; On vegetation,Cropland; Forest; Grassland; Urban; Water,Insecta,Class
+Generalised,Iduna caligata,On vegetation,Cropland; Forest; Grassland; Rock; Ruderal; Shrubland; Urban; Water; Wetland,Insecta,Class
+Generalised,Ardenna grisea,In ground; In water,Forest; Grassland; Wetland,Actinopterygii,Class
+Generalised,Lampetra fluviatilis,In water,Water,Actinopterygii,Class
+Generalised,Myotis capaccinii,In water,Water,Actinopterygii,Class
+Generalised,Ardenna grisea,In ground; In water,Forest; Grassland; Wetland,Crustacea,Class
+Generalised,Lampetra fluviatilis,In water,Water,Crustacea,Class
+Generalised,Myotis capaccinii,In water,Water,Arthropoda,Phylum
+Generalised,Hemidactylus turcicus,On vegetation,Rock; Shrubland; Urban,Arthropoda,Phylum
+Generalised,Tarentola mauritanica,On vegetation,Shrubland,Arthropoda,Phylum
+Generalised,Deroceras invadens,In ground; On ground or in leaf litter; On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Generalised,Deroceras klemmi,In ground; On ground or in leaf litter; On vegetation,Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Generalised,Deroceras sturanyi,In ground; On ground or in leaf litter; On vegetation,Grassland,Viridiplantae,Kingdom
+Generalised,Arion hortensis,On ground or in leaf litter; On vegetation,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Arion obesoductus,On ground or in leaf litter; On vegetation,Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Generalised,Arion silvaticus,On ground or in leaf litter; On vegetation,Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Generalised,Monacha cantiana,On vegetation,Forest; Grassland; Ruderal; Urban,Viridiplantae,Kingdom
+Generalised,Tandonia budapestensis,On ground or in leaf litter,Forest; Grassland; Urban,Viridiplantae,Kingdom
+Generalised,Tandonia nigra,On ground or in leaf litter,Forest; Grassland; Urban,Viridiplantae,Kingdom
+Specialised,Acanthodelphax spinosa,On vegetation,Wetland,Poaceae,Family
+Specialised,Dicranotropis remaniaca,On vegetation,Wetland,Poaceae,Family
+Specialised,Hyledelphax elegantula,On vegetation,Wetland,Poaceae,Family
+Specialised,Nothodelphax albocarinata,On vegetation,Wetland,Poaceae,Family
+Specialised,Ribautodelphax albostriata,On vegetation,Wetland,Poaceae,Family
+Specialised,Ribautodelphax collina,On vegetation,Wetland,Poaceae,Family
+Specialised,Ribautodelphax ochreata,On vegetation,Wetland,Poaceae,Family
+Specialised,Xanthodelphax flaveola,On vegetation,Wetland,Poaceae,Family
+Specialised,Xanthodelphax straminea,On vegetation,Wetland,Poaceae,Family
+Specialised,Agalmatium flavescens,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Falcidius apterus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Mycterodus cuniceps,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Mycterodus immaculatus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Mycterodus orthocephalus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Blepharidopterus riegeri,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Closterotomus vicinus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Hallodapus rufescens,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Hypsitylus prasinus,In air; On ground or in leaf litter; On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Psallus dilutus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Systellonotus alpinus,On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Tupiocoris rhododendri,In air; On ground or in leaf litter; On vegetation,Wetland,Viridiplantae,Kingdom
+Specialised,Arge stecki,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Arge thoracica,On vegetation,Forest,Apiaceae,Family
+Specialised,Chrysis gribodoi,On ground or in leaf litter; On vegetation,Grassland; Ruderal; Shrubland; Urban,Vespidae,Family
+Specialised,Chrysis leovigata,On ground or in leaf litter; On vegetation,Grassland; Ruderal; Shrubland; Urban,Vespidae,Family
+Specialised,Chrysis lucida,On ground or in leaf litter; On vegetation,Grassland; Ruderal; Shrubland; Urban,Vespidae,Family
+Specialised,Chrysis sculpturata,On ground or in leaf litter; On vegetation,Grassland; Ruderal; Shrubland; Urban,Vespidae,Family
+Specialised,Chrysis semicincta,On ground or in leaf litter; On vegetation,Grassland; Ruderal; Shrubland; Urban,Vespidae,Family
+Specialised,Cleptes chevrieri,On ground or in leaf litter; On vegetation,Forest; Grassland; Ruderal; Shrubland; Wetland,Tenthredinidae,Family
+Specialised,Omalus bidens,On ground or in leaf litter; On vegetation,Forest; Ruderal; Shrubland,Vespidae,Family
+Specialised,Omalus helveticus,On ground or in leaf litter; On vegetation,Forest; Ruderal; Shrubland,Vespidae,Family
+Specialised,Omalus truncatus,On ground or in leaf litter; On vegetation,Forest; Ruderal; Shrubland,Vespidae,Family
+Specialised,Cerceris arenaria,On ground or in leaf litter,Grassland; Ruderal; Shrubland; Urban,Coleoptera,Order
+Specialised,Cerceris quadricincta,On ground or in leaf litter,Grassland; Ruderal; Shrubland,Coleoptera,Order
+Specialised,Cerceris quadrifasciata,On ground or in leaf litter,Grassland; Ruderal; Shrubland,Coleoptera,Order
+Specialised,Cerceris quinquefasciata,On ground or in leaf litter,Grassland; Ruderal; Shrubland; Urban,Coleoptera,Order
+Specialised,Cerceris rybiensis,On ground or in leaf litter,Grassland; Ruderal; Shrubland,Coleoptera,Order
+Specialised,Aglaostigma alboplagiatum,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Aglaostigma discolos,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Aglaostigma pingue,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Aglaostigma subalpinum,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Bavonia focarilei,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Caliroa cerasii,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Caliroa cinxis,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Cladardis bordoniii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Cladius pallipes,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Claremontia uncts,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Craesus alniastrii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Craesus brischkeii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Dineura pullior,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Dineura stilats,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Empria exciss,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Empria gussakovskii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Empria sexpunctats,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Empria tirolensis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Eopsis beaumonti,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Eriocampa ovats,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Eutomostethus nigrans,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenella catenats,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenella granulata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenusa dohrniii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenusella hortulans,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenusella septentrionalis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Fenusella wuestneiii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Hennedyia annulitarsis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Heterarthrus imbrosensis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Heterarthrus leucomels,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Heterarthrus miscrocephalus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Mesoneura nigrostigmata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Mesoneura opacs,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Monophadnus monticols,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Monophadnus spinolaee,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Neomessa steusloffiffi,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Nepionema helveticum,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus aequalis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus albiventris,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus calcicola,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus gehrsi,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus glabriceps,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus imperfectus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus infirmus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,"Pachynematus lichtwardti
+Konow,",On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus montanus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus nigerrimus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus omega,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus pallescens,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus pumilio,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus punctifrons,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus rugosulus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus salicicola,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus smithae,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pachynematus vaginosus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Perineura rubii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Platycampus obscuripes,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pristicampus arcticus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pristicampus incisus,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pseudodineura fusculs,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pseudodineura heringi,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pseudodineura mocsaryi,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Pseudodineura parvuls,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Rhadinoceraea reitteri,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Scolioneura betuletii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Siobla sturmiii,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Strongylogaster maculs,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Strongylogaster struthiopteridis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis albonotata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis annuligera,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis cabrerae,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis carinata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis crassiuscula,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis floricola,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis ligata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis macedonica,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis moscovita,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis nebrodensis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis nigella,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis nivosa,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis putoni,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis quadriforis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis quadriguttata,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis semirufa,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis sordids,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tenthredopsis tessellats,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Thrinax contigua,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Tomostethus melanopygius,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Tomostethus orientalis,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Ussurinus nobilis,On vegetation,Forest; Wetland,Viridiplantae,Kingdom
+Specialised,Depressaria gallicella,On vegetation,Cropland,Apiaceae,Family
+Specialised,Depressaria incognitella,On vegetation,Cropland,Apiaceae,Family
+Specialised,Depressaria pastinacella,On vegetation,Cropland,Apiaceae,Family
+Specialised,Brevantennia siederi,On vegetation,Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Specialised,Bruandia comitella,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Epichnopterix alpina,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Epichnopterix kovacsi,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Epichnopterix montana,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Epichnopterix pontbrillantella,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Eumasia parietariella,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Leptopterix plumistrella,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Megalophanes turatii,On vegetation,Forest; Grassland; Urban; Wetland,Viridiplantae,Kingdom
+Specialised,Narycia astrella,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Narycia duplicella,On vegetation,Forest; Grassland,Viridiplantae,Kingdom
+Specialised,Bradyrrhoa cantenerella,On vegetation,Forest,Viridiplantae,Kingdom
+Specialised,Oxythrips inopinatus,On vegetation,Cropland,Viridiplantae,Kingdom
+Specialised,Oxythrips tatricus,On vegetation,Cropland,Viridiplantae,Kingdom
+Generalised,Drilus concolor,On ground or in leaf litter,Forest; Grassland,Pulmonata,Order
+Generalised,Eumodicogryllus bordigalensis,In ground; In vegetation; On ground or in leaf litter,Cropland; Grassland; Ruderal; Urban,Insecta,Class
+Generalised,Nepa cinerea,On ground or in leaf litter,Water,Insecta,Class
+Generalised,Noterus crassicornis,On ground or in leaf litter,Wetland,Insecta,Class
+Generalised,Sisyra nigra,In air; On ground or in leaf litter; On vegetation,Water,Insecta,Class
+Generalised,Sisrya terminalis,In air; On ground or in leaf litter; On vegetation,Water,Insecta,Class

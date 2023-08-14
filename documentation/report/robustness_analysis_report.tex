@@ -1,0 +1,354 @@
+\documentclass[a4paper, 12pt]{report}
+
+% base
+\usepackage[utf8]{inputenc}
+
+% packages
+\usepackage{upquote}
+\usepackage{tikz}
+\usepackage{amsmath}
+\setcounter{MaxMatrixCols}{11}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+
+% references
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black
+}
+
+% code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+
+% margine
+\usepackage[margin=1.5in]{geometry} 
+
+% paragraphs
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+% impaginazione
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% titles
+\usepackage{titlesec}
+\titleformat{\chapter}[block]{\Huge\bfseries}{\thechapter.}{1em}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+
+% frontpage va messa prima del begin nei report
+
+% for references in table of contents, last package to upload!
+\usepackage{hyperref}
+
+\begin{document}
+
+%---
+
+\begin{titlepage}
+\centering
+\includegraphics[width=0.15\textwidth]{wsl_logo.jpeg}\par\vspace{1cm}
+\vspace{2.5cm}
+{\huge\bfseries The Robustness of a Food Web  \par}
+\vspace{0.5cm}
+{\Large\bfseries Assessing the robustness of a food web through different attack strategies \par}
+\vspace{3.5cm}
+{\Large\itshape Alain Joss \par}
+\vfill
+{\large \today \par}
+\end{titlepage}
+
+%---
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+
+\chapter{Assessing Robustness}
+
+\section{The Overall Idea}
+For assessing the robustness of a network, 
+the idea is to perform some kind of perturbation, 
+and compute different kinds of measures in the process,
+until a certain state has been reached.
+The high level algorithm looks as follows:
+
+\begin{algorithm}
+    \caption{Perturbation}
+    \begin{algorithmic}[1]
+    \small
+    \Require Graph G
+    \State Initialize $stop\_state \gets false$
+    \State Initialize $robustness\_states \gets list()$
+    \While{not $stop\_state$}
+        \State Remove a node from G (according to a predefined attack strategy).
+        \State Compute some metric of robustness of G.
+        \State Save value of metric in $robustness\_states$
+        \If{some network state} 
+            \State $stop\_state \gets true$
+        \EndIf
+    \EndWhile
+    \State Visualize the robustness trend of the perturbation.
+    \end{algorithmic}
+\end{algorithm}
+
+By visualizing the trend of robustness across diverse perturbations, we can evaluate the network's resilience under a variety of metrics and attack strategies. 
+In this context, an "attack strategy" refers to the specific probability distribution employed for node removal. 
+
+\section{Non-Deterministic Perturbations}
+If at any step, a perturbation involves a non-deterministic computation,
+its results can be skewed by the effect of randomness.
+The solution is to run multiple times the same perturbation, 
+and average the results across runs:
+
+\begin{minipage}{\textwidth}
+\begin{algorithm}[H]
+    \caption{Multiple Perturbations}
+    \begin{algorithmic}[1]
+    \small
+    \Require Graph $G$, Number of perturbations $N$
+    \For{$i = 1$ to $N$}
+        \State Perform perturbation $i$ on $G$.
+    \EndFor
+    \State Average the perturbations.
+    \State Visualize the robustness trend of the perturbations.
+    \end{algorithmic}
+\end{algorithm}
+\end{minipage}
+
+\section{Node Removal in Food Webs}
+\subsection{Types of Extinctions}
+Food web perturbations can result in two types of node removals: primary and secondary extinctions. Primary extinctions refer to a node's direct removal based on a defined attack strategy. Secondary extinctions occur when a node's elimination, directly or indirectly, results in the removal of another node. Regardless of the attack strategy employed, primary extinctions occur one by one.
+
+\subsection{The Undirected Approach}
+Considering the undirected version of a food web, calculating secondary extinctions involves assessing if a node becomes isolated after each primary extinction. Isolation can result from either primary or secondary extinctions. The algorithm for the undirected approach is as follows:
+
+\begin{algorithm}
+    \caption{Undirected Removal}
+    \begin{algorithmic}[1]
+    \small
+    \Require Graph $G$, Node $n$
+    \State Remove node $n$ from $G$ 
+    \State Initialize $continue\_flag$ $\gets$ true
+    \While{$continue$}
+        \State $continue\_flag$ $\gets$ false
+        \For{each Node $u$ in $G$}
+            \If{$u$.degree == 0}
+                \State $continue\_flag$ $\gets$ true
+                \State Remove node $u$ from $G$
+            \EndIf
+        \EndFor
+    \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+The $continue\_flag$ ensures we only check for isolated nodes as long as necessary, as the removal of one node can potentially leave others isolated.
+
+
+\subsection{The Directed Approach}
+Given that food webs are typically directed networks, a more appropriate node-removal algorithm would consider the direction of prey-predator relationships. This means when a node is removed, all species feeding on it also go extinct if they have no other food sources. Calculating secondary extinctions here involves checking if a node still receives energy (has incoming edges). The algorithm for this directed approach is as follows:
+
+\begin{minipage}{\textwidth}
+\begin{algorithm}[H]
+    \caption{Directed Node Removal}
+    \begin{algorithmic}[1]
+    \small
+    \Require Directed Graph $G$, Node $n$
+    \State $k\_level\_neighbors \gets$ successors($n$) in $G$
+    \State Remove node $n$ from $G$
+    \While{$k\_level\_neighbors \neq \emptyset$}
+        \State Initialize empty sets $new\_level\_neighbors$, $removed\_neighbors$
+        \For{each Node $neighbor$ in $k\_level\_neighbors$}
+            \State $change\_flag \gets \text{false}$
+            \If{$G$.in\_degree($neighbor$) == 0 or \\ 
+            \hspace{\algorithmicindent} \hspace{\algorithmicindent} $G$.degree($neighbor$) == 0 or \\
+            \hspace{\algorithmicindent} \hspace{\algorithmicindent} $G$.in\_degree($neighbor$) == 1 and \\ 
+            \hspace{\algorithmicindent} \hspace{\algorithmicindent} $G$.has\_edge($neighbor$, $neighbor$)}
+            \State Add successors($neighbor$) to $new\_level\_neighbors$
+            \State Add $neighbor$ to $removed\_neighbors$
+            \State Remove $neighbor$ from $G$
+            \State $change\_flag \gets \text{true}$
+            \EndIf
+            \If{not $change\_flag$}
+                \State Break
+            \EndIf
+        \EndFor
+        \State $k\_level\_neighbors \gets new\_level\_neighbors \setminus removed\_neighbors$
+    \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+\end{minipage}
+
+Node removal occurs when:
+\begin{itemize}
+\item "G.in degree(neighbor) == 0": A node has no food source.
+\item "G.degree(neighbor) == 0": A node becomes completely isolated, including plants, which we assume need pollinators.
+\item "G.in degree(neighbor) == 1 and G.has edge(neighbor, neighbor)": A cannibalistic node is not receiving energy from the network.
+\end{itemize}
+
+\section{Attack Strategies}
+Attack strategies dictate the rules governing the selection of nodes (species) for primary extinction. These nodes are then processed by the node removal algorithm. The implemented strategies include:
+
+\begin{itemize}
+\item Random Attack: Applies an equal probability for removal to all nodes.
+\item Centrality Attack: Prioritizes node removal based on a chosen centrality measure, proceeding in descending order. This strategy produces deterministic results.
+\item Habitat Attack: Nodes associated with a specific habitat have an increased removal probability. The strategy also considers the number of different habitats a node inhabits.
+\item Threatened Species Attack: Nodes representing species on a threatened species list are prioritized for removal. Within this list, the removal order is random.
+\end{itemize}
+
+\section{Summary}
+
+Putting it all together, the robustness assessment of the food web looks as follows:
+
+\begin{minipage}{\textwidth}
+\begin{algorithm}[H]
+    \caption{Robustness Assessment}
+    \begin{algorithmic}[1]
+    \small
+    \Require Graph $G$, Number of perturbations $N$, Attack Strategy $S$
+    \State Initialize $all\_robustness\_states \gets list()$
+    \For{$i = 1$ to $N$}
+    \State Initialize $stop\_state \gets false$
+    \State Initialize $robustness\_states \gets list()$
+    \While{not $stop\_state$}
+    \State Choose a node according to attack strategy $S$ and remove from $G$.
+    \State Apply "Directed Node Removal" algorithm.
+    \State Compute some metric of robustness of $G$.
+    \State Save value of metric in $robustness\_states$
+    \If{some network state}
+    \State $stop\_state \gets true$
+    \EndIf
+    \EndWhile
+    \State Add $robustness\_states$ to $all\_robustness\_states$
+    \EndFor
+    \State Compute the average robustness trend from $all\_robustness\_states$.
+    \State Visualize the averaged robustness trend of the perturbations.
+    \end{algorithmic}
+\end{algorithm}
+\end{minipage}
+\chapter{Addressing Key Concerns}
+
+\section{Preliminary Steps}
+In preparation for the network's perturbation analysis, we need to address two concerns as follows:
+\begin{enumerate}
+\item For nodes with an in-degree of zero, that are not basal nodes, we construct randomized inward-links.
+\item As the network under consideration is a meta web, rather than a real food web, we eliminate k\% of inward links of generalist species.
+\end{enumerate}
+
+\section{Correcting Fake Basal Species}
+This step rectifies species misrepresented as basal due to data gaps. We create randomized inward-links for these species, considering their diet, habitat, and zone attributes.
+
+\begin{algorithm}
+    \caption{Randomized Inward-Links Construction}
+    \begin{algorithmic}[1]
+    \small
+    \Require Dataset "species\_for\_randomized\_link\_assignment", Dataset "all\_species\_and\_feeding\_groups"
+    \For{each row in "species\_for\_randomized\_link\_assignment"}
+        \State Extract the species, its diet, diet rank, habitat, and zone.
+        \State Check the second dataset "all\_species\_and\_feeding\_groups" to find species that share the same habitat and diet rank. 
+        \State Link the fake basal species to these species.
+        \State Remove duplicate links.
+        \State Retain a subset of potential links.
+        \State Add these links to the overall network graph.
+    \EndFor
+    \end{algorithmic}
+\end{algorithm}
+Depending on the species' dietary breadth, we retain different numbers of potential links:
+
+\begin{itemize}
+\item For Generalized-diet species, we retain 5\% of potential interaction links.
+\item For Specialized-diet species, we randomly select between 1 and 5 potential interaction links.
+\end{itemize}
+
+\section{Managing Generalist Species}
+
+Here, we eliminate p\% of inward links for generalist species, guided by the Optimal Foraging Theory (OFT). Generalist species are defined as those with a degree threshold of k. The algorithm is as follows:
+
+
+\begin{algorithm}
+    \caption{Prune Network on Degree Threshold}
+    \begin{algorithmic}[1]
+    \small
+    \Require Network $G$, Degree threshold $k$, Percentage to remove $p$
+    \State $nodes \gets$ List of nodes in $G$
+    \For{each $node$ in $nodes$}
+    \State $inDegree \gets$ in-degree of $node$ in $G$
+    \If{$inDegree \geq k$} \Comment{The node is a generalist}
+    \State $inwardEdges \gets$ List of in-edges of $node$ in $G$
+    \State $numEdgesToRemove \gets inDegree \times p$
+    \State $edgesToRemove \gets$ randomly sample $numEdgesToRemove$ from $inwardEdges$
+    \State Remove $edgesToRemove$ from $G$
+    \EndIf
+    \EndFor
+    \Ensure Pruned network $G$
+    \end{algorithmic}
+    \end{algorithm}
+    In this context, a node's in-degree refers to the number of incoming edges (number of predators). If a node's in-degree equals or exceeds a threshold k, it's deemed a generalist. For each generalist, a proportion p of its inward edges is randomly selected for removal, effectively pruning the network.
+
+\section{Summary}
+
+To summarize, the following steps prepare the network for its robustness assessment:
+
+\begin{algorithm}
+    \caption{Network Preparation}
+    \begin{algorithmic}[1]
+    \small
+    \Require Graph $G$, Datasets $D1$, $D2$
+    \State Apply "Randomized Inward-Links Construction" using $D1$ and $D2$ to $G$.
+    \State Apply "Pruning Based on OFT" to $G$.
+    \end{algorithmic}
+\end{algorithm}
+
+
+\chapter{The Final Pipeline}
+
+\begin{itemize}
+    \item importing the dataset
+    \item creating new links
+    \item removing links
+    \item create attack strategies $S$
+    \item perform perturbations for $|S|$ strategies
+    \item visualize all the different perturbation results
+\end{itemize}
+
+
+\end{document}
+
+
+
+
+
