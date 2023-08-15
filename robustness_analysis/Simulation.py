@@ -1,6 +1,6 @@
-from DiGraph import DiGraph
-from Perturbation import Perturbation
-from AttackStrategy import AttackStrategy
+from .DiGraph import DiGraph
+from .Perturbation import Perturbation
+from .AttackStrategy import AttackStrategy
 
 class Simulation():
 

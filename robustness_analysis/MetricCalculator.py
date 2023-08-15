@@ -1,5 +1,4 @@
 import networkx as nx
-from enum import Enum
 
 
 class MetricCalculator():
@@ -14,10 +13,10 @@ class MetricCalculator():
         "number_of_wccs",
         "number_of_sccs",
         "avg_pagerank",
-        "avg_betweenness",
-        "avg_in_closeness",
-        "avg_shortest_path_lssc",
-        "avg_trophic_level"
+        #"avg_betweenness",
+        #"avg_in_closeness",
+        #"avg_shortest_path_lssc",
+        #"avg_trophic_level"  # NetworkXError: Trophic levels are only defined for graphs where every node has a path from a basal node (basal nodes are nodes with no incoming edges).
     ]
 
 

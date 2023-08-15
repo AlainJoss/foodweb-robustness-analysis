@@ -1,20 +1,25 @@
 import networkx as nx
 import random
 import pandas as pd
-import numpy as np
-from MetricCalculator import MetricCalculator
+from .MetricCalculator import MetricCalculator
+
 
 class DiGraph():
-    
+
     def __init__(self, edge_df: pd.DataFrame, source_col: str = 'Source_Name', target_col: str = 'Target_Name') -> None:
         self.graph = self.load_data(edge_df, source_col, target_col)
         self.metrics_calculator = MetricCalculator()
+        self.metric_trend = {metric: [] for metric in MetricCalculator.get_metric_names()}
 
 
     # TODO: reverse dataset instead of graph
     def load_data(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> nx.DiGraph:
         g = nx.from_pandas_edgelist(edge_df, source=source_col, target=target_col, edge_attr=True, create_using=nx.DiGraph())
         return nx.reverse(g)
+    
+        
+    def get_nx_graph(self) -> nx.DiGraph:
+        return self.graph
     
 
     def set_buckets(self, buckets: dict) -> None:
@@ -24,8 +29,18 @@ class DiGraph():
     def copy(self) -> object:
         return self.graph.copy()
     
+    
+    def size(self) -> int:
+        return len(self.graph)
+    
+    
+    def update_metrics(self) -> None:
+        computed_metrics = self._compute_metrics()
+        for metric in self.metric_trend:
+            self.metric_trend[metric].append(computed_metrics[metric])
+    
 
-    def compute_metrics(self) -> dict:
+    def _compute_metrics(self) -> dict:
         return self.metrics_calculator.compute_metrics(self.graph)
     
 
