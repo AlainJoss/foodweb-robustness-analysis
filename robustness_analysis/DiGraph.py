@@ -2,11 +2,12 @@ import networkx as nx
 import random
 import pandas as pd
 import numpy as np
+from MetricCalculator import MetricCalculator
 
 class DiGraph():
     def __init__(self, edge_df: pd.DataFrame, source_col: str = 'Source_Name', target_col: str = 'Target_Name') -> None:
         self.graph = self.load_data(edge_df, source_col, target_col)
-        self.metrics = [self.average_in_degree, self.density]
+        self.metrics_calculator = MetricCalculator()
 
     # TODO: reverse dataset instead of graph
     def load_data(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> nx.DiGraph:
@@ -17,32 +18,11 @@ class DiGraph():
     def copy(self) -> object:
         return self.graph.copy()
     
-    def size(self) -> int:
-        return self.graph.number_of_nodes()
-    
-    
+
     def compute_metrics(self) -> dict:
-        return {metric.__name__: metric() for metric in self.metrics}
-
-
-    def average_in_degree(self) -> float:
-        n = self.size()
-        total_in_degree = sum(dict(self.graph.in_degree()).values())
-        avg_in_degree = total_in_degree / n
-        return avg_in_degree
+        return self.metrics_calculator.compute_metrics(self.graph)
 
     
-    def density(self) -> float:
-        n = self.size() 
-        if n < 2:
-            return 0  # or some other value to indicate the graph is too small
-        return nx.density(self.graph)
-
-    
-    
-    # TODO: implement other metrics
-    
-
     def create_random_buckets(self) -> dict:
         for node in self.graph.nodes():
             self.graph.nodes[node]['bucket'] = 'b1'
@@ -104,9 +84,3 @@ class DiGraph():
                     break
 
             k_level_neighbors = new_level_neighbors - removed_neighbors
-
-
-    def in_degree_centrality(self) -> dict:
-        return nx.in_degree_centrality(self.graph)
-
-    # TODO: implement other metrics
