@@ -45,9 +45,11 @@ The primary objective of this project is to:
 
 ## 🚀 **Future Goals**
 
-- Integrate more attack strategies.
-- Incorporate real-world datasets for richer simulations.
-- Enhance visualization for better data interpretation.
+- Integrate the remaining attack strategies.
+- Integrate the preparation routine of the metaweb.
+- Integrate more network metrics to track during perturbations.
+- Write the simulation code, to run multiple perturbations in parallel.
+- Create visualizations and gifs for data interpretation.
 
 ## 📜 **License**
 
