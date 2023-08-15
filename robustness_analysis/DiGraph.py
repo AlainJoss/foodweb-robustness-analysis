@@ -5,14 +5,20 @@ import numpy as np
 from MetricCalculator import MetricCalculator
 
 class DiGraph():
+    
     def __init__(self, edge_df: pd.DataFrame, source_col: str = 'Source_Name', target_col: str = 'Target_Name') -> None:
         self.graph = self.load_data(edge_df, source_col, target_col)
         self.metrics_calculator = MetricCalculator()
+
 
     # TODO: reverse dataset instead of graph
     def load_data(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> nx.DiGraph:
         g = nx.from_pandas_edgelist(edge_df, source=source_col, target=target_col, edge_attr=True, create_using=nx.DiGraph())
         return nx.reverse(g)
+    
+
+    def set_buckets(self, buckets: dict) -> None:
+        self.buckets = buckets
     
 
     def copy(self) -> object:
@@ -21,26 +27,6 @@ class DiGraph():
 
     def compute_metrics(self) -> dict:
         return self.metrics_calculator.compute_metrics(self.graph)
-
-    
-    def create_random_buckets(self) -> dict:
-        for node in self.graph.nodes():
-            self.graph.nodes[node]['bucket'] = 'b1'
-        self.buckets = {'b1': 1.0}
-    
-
-    def create_sequential_buckets(self) -> dict:
-        self.buckets = None
-
-
-    def create_threatened_habitats_buckets(self, threatened_habitats: list =[]) -> dict:
-        # TODO: collect information from attributes of nodes
-        self.buckets = None
-
-
-    def create_threatened_species_buckets(self, threatened_species: list = []) -> dict:
-        # TODO: collect information from attributes of nodes
-        self.buckets = None
     
 
     def _choose_bucket(self) -> str:
@@ -55,7 +41,7 @@ class DiGraph():
         return random.choice(eligible_nodes)
 
 
-    def node_removal(self, node: str) -> None:
+    def remove_node_and_consequent(self, node: str) -> None:
         k_level_neighbors = set(self.graph.successors(node))
         self.graph.remove_node(node)
 

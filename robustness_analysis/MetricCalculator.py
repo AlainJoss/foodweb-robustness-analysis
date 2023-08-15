@@ -1,8 +1,30 @@
 import networkx as nx
-from Enums import Metrics
+from enum import Enum
 
 
 class MetricCalculator():
+
+    METRIC_METHODS = [
+        "avg_in_degree",
+        "avg_out_degree",
+        "avg_total_degree",
+        "density",
+        "largest_wcc_size",
+        "largest_ssc_size",
+        "number_of_wccs",
+        "number_of_sccs",
+        "avg_pagerank",
+        "avg_betweenness",
+        "avg_in_closeness",
+        "avg_shortest_path_lssc",
+        "avg_trophic_level"
+    ]
+
+
+    @classmethod
+    def get_metric_names(cls):
+        return cls.METRIC_METHODS
+    
 
     def compute_metrics(self, graph: nx.DiGraph) -> dict:
         """
@@ -11,10 +33,10 @@ class MetricCalculator():
         """
         metric_results = {}
         
-        for metric in Metrics:
+        for metric in self.METRIC_METHODS:
 
-            metric_function = getattr(self, metric.value)
-            metric_results[metric.value] = metric_function(graph)
+            metric_function = getattr(self, metric)
+            metric_results[metric] = metric_function(graph)
         
         return metric_results
     

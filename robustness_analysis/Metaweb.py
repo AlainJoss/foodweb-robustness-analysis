@@ -1,15 +1,23 @@
 import pandas as pd
 import numpy as np
 import random
-from Enums import Preparation
+from enum import Enum
+
+
+class Preparation(Enum):
+    USE_AS_IS = "use_as_is"  # The name assignment is just there to prevent the IDE of complaining about my coding style
+    PREPARE = "prepare"
 
 
 class Metaweb():
+
     def __init__(self, csv: str) -> None:
         self.edge_df = pd.read_csv(csv)
 
+
     def get_edge_df(self) -> pd.DataFrame:
         return self.edge_df
+    
 
     def prepare(self, *, preparation: Preparation):
         if preparation == Preparation.PREPARE:
@@ -19,6 +27,7 @@ class Metaweb():
             pass
         else:
             raise ValueError(f"Invalid preparation: {preparation}")
+
 
     def create_random_links(self) -> None:
         def load_dataframe_from_csv(path):

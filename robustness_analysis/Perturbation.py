@@ -1,24 +1,18 @@
 from DiGraph import DiGraph
-from Enums import AttackStrategy
+from AttackStrategy import AttackStrategy
+from MetricCalculator import MetricCalculator
 
 class Perturbation():
-    def __init__(self, graph: DiGraph, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list =[]) -> None:
+
+    def __init__(self, graph: DiGraph, strategy: AttackStrategy) -> None:
         self.graph = graph
-        self._create_buckets(attack_strategy, threatened_habitats, threatened_species)
-        self.metric_trend = {metric.__name__: [] for metric in self.graph.metrics}
+        self.strategy = strategy
+        self.buckets = self._create_buckets()
+        self.metric_trend = {metric: [] for metric in MetricCalculator.get_metric_names()}
 
 
-    def _create_buckets(self, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list = []) -> None:
-        if attack_strategy == AttackStrategy.RANDOM:
-            self.graph.create_random_buckets()
-        elif attack_strategy == AttackStrategy.SEQUENTIAL:
-            self.graph.create_sequential_buckets()
-        elif attack_strategy == AttackStrategy.THREATENED_HABITATS:
-            self.graph.create_threatened_habitats_buckets(threatened_habitats)
-        elif attack_strategy == AttackStrategy.THREATENED_SPECIES:
-            self.graph.create_threatened_species_buckets(threatened_species)
-        else:
-            raise ValueError(f"Invalid attack strategy: {attack_strategy}")
+    def _create_buckets(self) -> dict:
+        return self.strategy.create_buckets(self.graph.graph)
 
 
     def run(self) -> None:
@@ -28,11 +22,8 @@ class Perturbation():
                 self.metric_trend[metric].append(computed_metrics[metric])
             
             node = self.graph.choose_node()
-            self.graph.node_removal(node)
-
+            self.graph.remove_node_and_consequent(node)
+            
 
     def get_results(self) -> dict:
         return self.metric_trend
-
-
-
