@@ -1,11 +1,8 @@
-from enum import Enum
 import pandas as pd
 import numpy as np
 import random
+from Enums import Preparation
 
-class Preparation(Enum):
-    USE_AS_IS = "use_as_is"  # The name assignment is just there to prevent the IDE of complaining about my coding style
-    PREPARE = "prepare"
 
 class Metaweb():
     def __init__(self, csv: str) -> None:

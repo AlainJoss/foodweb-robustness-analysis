@@ -1,12 +1,6 @@
 from DiGraph import DiGraph
-from enum import Enum
 from Perturbation import Perturbation
-
-class AttackStrategy(Enum):
-    RANDOM = "random"
-    SEQUENTIAL = "sequential"
-    THREATENED_HABITATS = "threatened_habitats"
-    THREATENED_SPECIES = "threatened_species"
+from Enums import AttackStrategy
 
 class Simulation():
     def __init__(self, graph: DiGraph, k: int, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list =[]) -> None:

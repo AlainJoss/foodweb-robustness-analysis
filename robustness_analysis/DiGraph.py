@@ -1,52 +1,66 @@
 import networkx as nx
 import random
 import pandas as pd
-from Simulation import AttackStrategy
+import numpy as np
 
 class DiGraph():
     def __init__(self, edge_df: pd.DataFrame, source_col: str = 'Source_Name', target_col: str = 'Target_Name') -> None:
         self.graph = self.load_data(edge_df, source_col, target_col)
-        self.node_list = list(self.graph.nodes(data=True))
+        self.metrics = [self.average_in_degree, self.density]
 
-
+    # TODO: reverse dataset instead of graph
     def load_data(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> nx.DiGraph:
-        return nx.from_pandas_edgelist(edge_df, source=source_col, target=target_col, edge_attr=True, create_using=nx.DiGraph())
+        g = nx.from_pandas_edgelist(edge_df, source=source_col, target=target_col, edge_attr=True, create_using=nx.DiGraph())
+        return nx.reverse(g)
     
-    def copy(self):
+
+    def copy(self) -> object:
         return self.graph.copy()
     
-
-    def create_buckets(self, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list = []) -> None:
-        if attack_strategy == AttackStrategy.RANDOM:
-            self.buckets = self._create_random_buckets()
-        elif attack_strategy == AttackStrategy.SEQUENTIAL:
-            self.buckets = self._create_sequential_buckets()
-        elif attack_strategy == AttackStrategy.THREATENED_HABITATS:
-            self.buckets = self._create_threatened_habitats_buckets(threatened_habitats)
-        elif attack_strategy == AttackStrategy.THREATENED_SPECIES:
-            self.buckets = self._create_threatened_species_buckets(threatened_species)
-        else:
-            raise ValueError(f"Invalid attack strategy: {attack_strategy}")
+    def size(self) -> int:
+        return self.graph.number_of_nodes()
+    
+    
+    def compute_metrics(self) -> dict:
+        return {metric.__name__: metric() for metric in self.metrics}
 
 
-    def _create_random_buckets(self) -> dict:
-        for node in self.graph.nodes():
-            self.graph.nodes[node]['bucket'] = 'b1'
-        return {'b1': 1.0}
+    def average_in_degree(self) -> float:
+        n = self.size()
+        total_in_degree = sum(dict(self.graph.in_degree()).values())
+        avg_in_degree = total_in_degree / n
+        return avg_in_degree
+
+    
+    def density(self) -> float:
+        n = self.size() 
+        if n < 2:
+            return 0  # or some other value to indicate the graph is too small
+        return nx.density(self.graph)
+
+    
+    
+    # TODO: implement other metrics
     
 
-    def _create_sequential_buckets(self) -> dict:
-        pass
+    def create_random_buckets(self) -> dict:
+        for node in self.graph.nodes():
+            self.graph.nodes[node]['bucket'] = 'b1'
+        self.buckets = {'b1': 1.0}
+    
+
+    def create_sequential_buckets(self) -> dict:
+        self.buckets = None
 
 
-    def _create_threatened_habitats_buckets(self, threatened_habitats: list =[]) -> dict:
+    def create_threatened_habitats_buckets(self, threatened_habitats: list =[]) -> dict:
         # TODO: collect information from attributes of nodes
-        pass
+        self.buckets = None
 
 
-    def _create_threatened_species_buckets(self, threatened_species: list = []) -> dict:
+    def create_threatened_species_buckets(self, threatened_species: list = []) -> dict:
         # TODO: collect information from attributes of nodes
-        pass
+        self.buckets = None
     
 
     def _choose_bucket(self) -> str:
