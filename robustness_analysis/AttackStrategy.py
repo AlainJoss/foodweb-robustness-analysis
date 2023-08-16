@@ -43,4 +43,3 @@ class ThreatenedSpecies(AttackStrategy):
     def create_buckets(self, graph: nx.DiGraph) -> dict:
         # Use self.threatened_species in the implementation
         pass
-

@@ -3,7 +3,27 @@ import networkx as nx
 
 class MetricCalculator():
 
-    METRIC_METHODS = [
+    """
+    Provides methods to compute various metrics on directed graphs.
+    
+    This class is designed to calculate a set of predefined metrics on the passed directed graph. 
+    These metrics offer insights into the structure, centrality, and other features of the graph. 
+
+    Attributes:
+        METRIC_METHODS (list): List of metric methods available in the class.
+    
+    Methods:
+        get_metric_names: Returns the list of metric methods available in the class.
+        compute_metrics: Computes all the metrics listed in METRIC_METHODS for a given graph.
+        
+        metric specific methods ...
+
+    Note:
+        When adding a new metric method to the class, simply add the method name to the METRIC_METHODS list 
+        to include it in the compute_metrics() calculations.
+    """
+
+    METRICS = [
         "avg_in_degree",
         "avg_out_degree",
         "avg_total_degree",
@@ -21,18 +41,14 @@ class MetricCalculator():
 
 
     @classmethod
-    def get_metric_names(cls):
-        return cls.METRIC_METHODS
+    def get_metric_names(cls) -> list:
+        return cls.METRICS
     
 
     def compute_metrics(self, graph: nx.DiGraph) -> dict:
-        """
-        When a new metric is added to the enum Metrics and the method is written below in this class,
-        no change is needed in the compute_metrics() method itself.
-        """
         metric_results = {}
         
-        for metric in self.METRIC_METHODS:
+        for metric in self.METRICS:
 
             metric_function = getattr(self, metric)
             metric_results[metric] = metric_function(graph)
