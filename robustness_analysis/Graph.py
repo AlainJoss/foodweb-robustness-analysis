@@ -6,32 +6,17 @@ from .MetricCalculator import MetricCalculator
 
 class Graph():
     """
-    DiGraph's responsibilities are mainly to compute, keep track, and report its state.
+    Represents a directed graph with methods to perform various operations like 
+    node removal, metric calculation, and more.
     
-    It represents a directed graph constructed from a provided edge DataFrame.
-    This class contains methods for loading data into the graph, manipulating it, 
-    and computing various network metrics.
-
     Attributes:
-        nx_graph (nx.DiGraph): NetworkX directed graph instance.
-        metrics_calculator (MetricCalculator): Instance to calculate network metrics.
-        metrics_trend (dict): Trends of metrics computed over the course of operations.
-
-    Methods:
-        load_data: Loads data from a DataFrame into the graph.
-        get_nx_graph: Returns the current NetworkX graph instance.
-        set_buckets: Assigns a bucket configuration for nodes.
-        copy: Returns a copy of the current graph.
-        size: Returns the number of nodes in the graph.
-        update_metrics_evolution: Computes and updates the metric trends.
-        _compute_metrics: Computes the graph's metrics using the metrics_calculator.
-        _choose_bucket: Randomly chooses a bucket based on assigned probabilities.
-        choose_node: Randomly chooses a node based on bucket configurations.
-        remove_node_and_dependents: Removes a node and any consequent nodes that become isolated.
-
-    Note:
-        This class assumes that the edge DataFrame provided during initialization 
-        contains columns that represent source and target nodes.
+    -----------
+    nx_graph : NetworkX.DiGraph
+        The underlying directed graph representation using NetworkX.
+    metrics_calculator : MetricCalculator
+        Utility to compute various metrics on the graph.
+    metrics_trend : dict
+        Stores the trends of metrics computed over operations on the graph.
     """
 
     def __init__(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> None:
@@ -41,8 +26,8 @@ class Graph():
 
 
     # TODO: reverse dataset instead of graph
-    def load_data(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> nx.DiGraph:
-        g = nx.from_pandas_edgelist(edge_df, source=source_col, target=target_col, edge_attr=True, create_using=nx.DiGraph())
+    def load_data(self, edge_df: pd.DataFrame, source: str, target: str) -> nx.DiGraph:
+        g = nx.from_pandas_edgelist(edge_df, source=source, target=target, create_using=nx.DiGraph())
         return nx.reverse(g)
     
         
@@ -62,7 +47,15 @@ class Graph():
         return len(self.nx_graph)
     
     
+    def copy(self) -> object:
+        return self.copy()
+    
+
     def update_metrics_evolution(self) -> None:
+        """
+        Computes and updates the trends of various metrics.
+        This might include metrics like average degree, graph density, etc.
+        """
         computed_metrics = self._compute_metrics()
         for metric in self.metrics_evolution:
             self.metrics_evolution[metric].append(computed_metrics[metric])
@@ -73,6 +66,14 @@ class Graph():
 
 
     def choose_node(self) -> str:
+        """
+        Chooses a node based on certain criteria or configuration (like bucket configurations).
+        
+        Returns:
+        --------
+        Node (or appropriate type)
+            The chosen node.
+        """
         chosen_bucket = self._choose_bucket()
         eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data['bucket'] == chosen_bucket]
         return random.choice(eligible_nodes)
@@ -85,6 +86,15 @@ class Graph():
 
 
     def remove_node_and_dependents(self, node: str) -> None:
+        """
+        Removes the specified node from the graph and also removes any dependent nodes 
+        that might be affected by this removal (like isolated nodes).
+        
+        Parameters:
+        -----------
+        node : Node (or appropriate type)
+            The node to be removed.
+        """
         k_level_neighbors = set(self.nx_graph.successors(node))
         self.nx_graph.remove_node(node)
 

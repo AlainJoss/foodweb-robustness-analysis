@@ -2,25 +2,13 @@ import networkx as nx
 
 
 class MetricCalculator():
-
     """
-    Provides methods to compute various metrics on directed graphs.
+    Utility class to calculate various metrics for directed graphs.
     
-    This class is designed to calculate a set of predefined metrics on the passed directed graph. 
-    These metrics offer insights into the structure, centrality, and other features of the graph. 
-
     Attributes:
-        METRIC_METHODS (list): List of metric methods available in the class.
-    
-    Methods:
-        get_metric_names: Returns the list of metric methods available in the class.
-        compute_metrics: Computes all the metrics listed in METRIC_METHODS for a given graph.
-        
-        metric specific methods ...
-
-    Note:
-        When adding a new metric method to the class, simply add the method name to the METRIC_METHODS list 
-        to include it in the compute_metrics() calculations.
+    -----------
+    METRICS : list of str
+        List of metric method names available in this class.
     """
 
     METRICS = [
@@ -46,6 +34,19 @@ class MetricCalculator():
     
 
     def compute_metrics(self, graph: nx.DiGraph) -> dict:
+        """
+        Computes all the metrics listed in METRICS for a given graph.
+        
+        Parameters:
+        -----------
+        graph : AbstractGraph (or appropriate type)
+            The graph for which metrics are to be computed.
+        
+        Returns:
+        --------
+        dict
+            A dictionary with metric names as keys and computed values as values.
+        """
         metric_results = {}
         
         for metric in self.METRICS:

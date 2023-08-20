@@ -1,29 +1,51 @@
-from .Graph import Graph
+from multiprocessing import Pool
 from .Perturbation import Perturbation
-from .AttackStrategy import AttackStrategy
-
-
-# TODO: carefully implement the copy() of the graph
+from .Graph import Graph
 
 class Simulation():
 
-    def __init__(self, graph: Graph, k: int, attack_strategy: AttackStrategy, threatened_habitats: list =[], threatened_species: list =[]) -> None:
+    def __init__(self, graph: Graph, k: int) -> None:
         self.graphs = self._create_graph_copies(graph, k)
-        self.perturbations = self._create_perturbations(self.graphs, k, attack_strategy)
-
+        self.perturbations = self._create_perturbations(k)
 
     def _create_graph_copies(self, graph: Graph, k: int) -> list:
         return [graph.copy() for _ in range(k)]
     
-
-    def _create_perturbations(self, graphs: list, k: int, attack_strategy: AttackStrategy) -> list:
-        return [Perturbation(graphs[i], attack_strategy, self.threatened_habitats, self.threatened_species) for i in range(k)]
-        
-
+    def _create_perturbations(self, k: int) -> list:
+        return [Perturbation(self.graphs[i]) for i in range(k)]
+    
     def run(self) -> None:
-        # TODO: parallelize, or if too heavy, use sequential strategy
-        pass
+        # Parallelize with multiprocessing
+        with Pool() as pool:
+            pool.map(self._run_perturbation, self.perturbations)
+    
+    @staticmethod
+    def _run_perturbation(perturbation: Perturbation) -> None:
+        """
+        Helper method to run a single perturbation.
+        
+        Parameters:
+        -----------
+        perturbation : Perturbation
+            The perturbation instance to be run.
+        """
+        perturbation.run()
 
+    def get_results(self) -> dict:
+        # Get results dictionary from each Perturbation and average
+        total_results = {}
+        num_perturbations = len(self.perturbations)
 
-    def get_results() -> list:
-        pass
+        # Summing results from all perturbations
+        for perturbation in self.perturbations:
+            results = perturbation.get_metric_evolution()
+            for key, value in results.items():
+                if key not in total_results:
+                    total_results[key] = value
+                else:
+                    total_results[key] += value
+
+        # Averaging the results
+        average_results = {key: value / num_perturbations for key, value in total_results.items()}
+        
+        return average_results
