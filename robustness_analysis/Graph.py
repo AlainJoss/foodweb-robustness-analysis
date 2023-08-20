@@ -1,8 +1,7 @@
 import networkx as nx
 import random
 import pandas as pd
-from .MetricCalculator import MetricCalculator
-
+from .metric_calculator import MetricCalculator
 
 class Graph():
     """

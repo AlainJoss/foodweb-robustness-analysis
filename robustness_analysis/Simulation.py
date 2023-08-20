@@ -1,6 +1,6 @@
 from multiprocessing import Pool
-from .Perturbation import Perturbation
-from .Graph import Graph
+from .perturbation import Perturbation
+from .graph import Graph
 
 class Simulation():
 

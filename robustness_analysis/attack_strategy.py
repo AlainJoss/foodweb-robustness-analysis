@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import networkx as nx
-from .Graph import Graph
+from .graph import Graph
 
 class AttackStrategy(ABC):
     """

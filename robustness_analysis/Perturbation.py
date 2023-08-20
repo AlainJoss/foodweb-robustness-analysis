@@ -1,5 +1,4 @@
-from .Graph import Graph
-from .AttackStrategy import AttackStrategy
+from .graph import Graph
 
 
 class Perturbation():
