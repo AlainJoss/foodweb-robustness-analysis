@@ -7,7 +7,7 @@ class Preparation(Enum):
     USE_AS_IS = "use_as_is"
     PREPARE = "prepare"
 
-class DataProcessor:
+class MetawebProcessor:
     """
     Utility class for processing node and link data, generating linkages, 
     and managing node attributes like habitat and feeding types.
@@ -79,7 +79,7 @@ class Metaweb:
     def get_edges(self) -> pd.DataFrame:
         return self.edges
 
-    def prepare(self, preparation: Preparation, data_processor: DataProcessor):
+    def prepare(self, preparation: Preparation, data_processor: MetawebProcessor):
         """
         Prepares the metaweb based on the given preparation type.
         
@@ -92,7 +92,7 @@ class Metaweb:
             self._add_random_links(data_processor)
             self._remove_random_links()
 
-    def _add_random_links(self, data_processor: DataProcessor):
+    def _add_random_links(self, data_processor: MetawebProcessor):
         new_links = data_processor.generate_links()
         self.edges = pd.concat([self.edges, new_links]).reset_index(drop=True)
 

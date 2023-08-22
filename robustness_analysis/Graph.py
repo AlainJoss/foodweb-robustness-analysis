@@ -2,6 +2,7 @@ import networkx as nx
 import random
 import pandas as pd
 from .metric_calculator import MetricCalculator
+import copy
 
 class Graph():
     """
@@ -18,8 +19,11 @@ class Graph():
         Stores the trends of metrics computed over operations on the graph.
     """
 
-    def __init__(self, edge_df: pd.DataFrame, source_col: str, target_col: str) -> None:
-        self.nx_graph = self.load_data(edge_df, source_col, target_col)
+    def __init__(self, edge_df: pd.DataFrame, source: str, target: str) -> None:
+        if edge_df is not None:
+            self.nx_graph = self.load_data(edge_df, source, target)
+        else:
+            self.nx_graph = nx.DiGraph()  # Initialize an empty directed graph
         self.metric_calculator = MetricCalculator()
         self.metrics_evolution = {metric: [] for metric in MetricCalculator.get_metric_names()}
 
@@ -28,6 +32,39 @@ class Graph():
     def load_data(self, edge_df: pd.DataFrame, source: str, target: str) -> nx.DiGraph:
         g = nx.from_pandas_edgelist(edge_df, source=source, target=target, create_using=nx.DiGraph())
         return nx.reverse(g)
+    
+
+    def filter_nodes_out(self, species_df: pd.DataFrame) -> None:
+        """
+        Removes nodes not present in the given species dataframe.
+        
+        Parameters:
+        -----------
+        species_df : pd.DataFrame
+            Dataframe containing species and their habitats.
+        """
+        for node in list(self.nx_graph.nodes).copy():
+            if node not in species_df['Taxon'].values:
+                self.nx_graph.remove_node(node)
+    
+
+    def update_attributes(self, species_df: pd.DataFrame) -> None:
+        """
+        Updates node attributes based on the given species dataframe.
+        
+        Parameters:
+        -----------
+        species_df : pd.DataFrame
+            Dataframe containing species and their habitats.
+        """
+        
+        for _, row in species_df.iterrows():
+            specie = row['Taxon']
+            habitat_list = row['Habitat'].split(";")
+            
+            # TODO: remove appendice
+            if specie in list(self.nx_graph.nodes).copy():
+                self.nx_graph.nodes[specie]['Habitat'] = habitat_list
     
         
     def get_nx_graph(self) -> nx.DiGraph:
@@ -45,10 +82,10 @@ class Graph():
     def size(self) -> int:
         return len(self.nx_graph)
     
-    
+
     def copy(self) -> object:
-        return self.copy()
-    
+        return copy.deepcopy(self)
+
 
     def update_metrics_evolution(self) -> None:
         """
@@ -62,26 +99,51 @@ class Graph():
 
     def _compute_metrics(self) -> dict:
         return self.metric_calculator.compute_metrics(self.nx_graph)
+    
 
+    """
+    Chooses a node based on certain criteria or configuration (like bucket configurations).
+    
+    Returns:
+    --------
+    Node (or appropriate type)
+        The chosen node.
+    """
 
+    """
     def choose_node(self) -> str:
-        """
-        Chooses a node based on certain criteria or configuration (like bucket configurations).
-        
-        Returns:
-        --------
-        Node (or appropriate type)
-            The chosen node.
-        """
+
         chosen_bucket = self._choose_bucket()
-        eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data['bucket'] == chosen_bucket]
+        eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data['Bucket'] == chosen_bucket]
+        return random.choice(eligible_nodes)
+    """
+    
+    def choose_node(self) -> str:
+        chosen_bucket = self._choose_bucket()
+        eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data.get('Bucket') == chosen_bucket]
+        
+        if not eligible_nodes:
+            print(f"No nodes found for bucket {chosen_bucket}. Removing bucket.")
+            del self.buckets[chosen_bucket]  # Remove the bucket from the dictionary
+            return self.choose_node()  # Recursively choose another node
         return random.choice(eligible_nodes)
     
     
     def _choose_bucket(self) -> str:
+        self._remove_empty_bucket()
+        if not self.buckets:  # If all buckets are empty
+            raise Exception("All buckets are empty. No nodes left to choose from.")
         buckets = list(self.buckets.keys())
         probabilities = list(self.buckets.values())
         return random.choices(buckets, weights=probabilities)[0]
+    
+
+    def _remove_empty_bucket(self) -> None:
+        for bucket in list(self.buckets.keys()):  # Use list() to avoid modifying dictionary while iterating
+            eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data.get('Bucket') == bucket]
+            if not eligible_nodes:
+                del self.buckets[bucket]  # Remove the bucket if no nodes are associated with it
+        
 
 
     def remove_node_and_dependents(self, node: str) -> None:

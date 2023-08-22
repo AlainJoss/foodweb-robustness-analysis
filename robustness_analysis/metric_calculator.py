@@ -12,15 +12,15 @@ class MetricCalculator():
     """
 
     METRICS = [
-        "avg_in_degree",
-        "avg_out_degree",
-        "avg_total_degree",
-        "density",
+        #"avg_in_degree",
+        #"avg_out_degree",
+        #"avg_total_degree",
+        #"density",
         "largest_wcc_size",
-        "largest_ssc_size",
+        #"largest_ssc_size",
         "number_of_wccs",
-        "number_of_sccs",
-        "avg_pagerank",
+        #"number_of_sccs",
+        #"avg_pagerank",
         #"avg_betweenness",
         #"avg_in_closeness",
         #"avg_shortest_path_lssc",
