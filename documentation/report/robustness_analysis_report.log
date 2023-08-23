@@ -1,13 +1,13 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.4.26)  17 JUL 2023 11:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.4.26)  23 AUG 2023 17:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/Alain/projects/foodweb_analysis/robustness_analysis/robustness_analysi
-s_report/robustness_analysis_report.tex
+**/Users/Alain/projects/foodweb-robustness-analysis/documentation/report/robust
+ness_analysis_report.tex
 
-(/Users/Alain/projects/foodweb_analysis/robustness_analysis/robustness_analysis
-_report/robustness_analysis_report.tex
+(/Users/Alain/projects/foodweb-robustness-analysis/documentation/report/robustn
+ess_analysis_report.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-03-30>
 (/Users/Alain/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/
@@ -878,15 +878,15 @@ Package hyperref Info: Link coloring ON on input line 77.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<wsl_logo.jpeg, id=66, 1204.5pt x 1204.5pt>
-File: wsl_logo.jpeg Graphic file (type jpg)
-<use wsl_logo.jpeg>
-Package pdftex.def Info: wsl_logo.jpeg  used on input line 83.
-(pdftex.def)             Requested size: 57.10236pt x 57.08568pt.
+<logo.png, id=66, 3083.52pt x 3083.52pt>
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 83.
+(pdftex.def)             Requested size: 133.24657pt x 133.20042pt.
 [1
 
 {/Users/Alain/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/p
-dftex.map} <./wsl_logo.jpeg>] (robustness_analysis_report.toc)
+dftex.map} <./logo.png (PNG copy)>] (robustness_analysis_report.toc)
 \tf@toc=\write5
 \openout5 = `robustness_analysis_report.toc'.
 
@@ -961,12 +961,12 @@ ged.
  ) 
 Here is how much of TeX's memory you used:
  23156 strings out of 476331
- 434626 string characters out of 5779300
+ 434471 string characters out of 5779300
  1865666 words of memory out of 5000000
  43182 multiletter control sequences out of 15000+600000
  519953 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,12n,104p,1301b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,12n,104p,1286b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/Alain/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour
 /jknappen/ec/dpi600/tcrm1200.pk></Users/Alain/Library/Application Support/MiKTe
 X/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/Alain/Librar
@@ -980,7 +980,7 @@ ype1/public/amsfonts/cm/cmr12.pfb></Users/Alain/Library/Application Support/MiK
 TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/Alain/Libr
 ary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cm
 ti12.pfb>
-Output written on robustness_analysis_report.pdf (9 pages, 244771 bytes).
+Output written on robustness_analysis_report.pdf (9 pages, 7045016 bytes).
 PDF statistics:
  186 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)
