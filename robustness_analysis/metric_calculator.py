@@ -12,6 +12,7 @@ class MetricCalculator():
     """
 
     METRICS = [
+        "graph_size",
         #"avg_in_degree",
         #"avg_out_degree",
         #"avg_total_degree",
@@ -55,6 +56,10 @@ class MetricCalculator():
             metric_results[metric] = metric_function(graph)
         
         return metric_results
+    
+
+    def graph_size(self, graph:nx.DiGraph) -> float:
+        return len(graph)
     
 
     def avg_in_degree(self, graph: nx.DiGraph) -> float:

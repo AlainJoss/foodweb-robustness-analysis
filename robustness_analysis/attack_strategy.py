@@ -19,14 +19,23 @@ class Random(AttackStrategy):
         for node in graph.nodes():
             graph.nodes[node]['bucket'] = 'b1'
         return {'b1': 1.0}
-
+    
 class Sequential(AttackStrategy):
 
-    def create_buckets(self, graph: nx.DiGraph) -> dict:
-        # Implementation here
-        pass
+    def create_buckets(self, graph: Graph) -> dict:
+        # Calculate out-degrees for each node
+        out_degrees = dict(graph.get_nx_graph().out_degree())
+        
+        # Sort nodes based on their out-degrees in descending order
+        sorted_nodes = sorted(out_degrees, key=out_degrees.get, reverse=True)
+        
+        # Assign each node to its own bucket based on its order
+        for index, node in enumerate(sorted_nodes):
+            graph.get_nx_graph().nodes[node]['bucket'] = f'b{index+1}'
 
-# TODO: set habitats attributes on nodes
+        # Return a dictionary where each node has its own bucket
+        return {f'b{index+1}': 1/len(sorted_nodes) for index in range(len(sorted_nodes))}
+
 
 class ThreatenedHabitats(AttackStrategy):
 
@@ -47,7 +56,7 @@ class ThreatenedHabitats(AttackStrategy):
             habitats = [habitat.strip() for habitat in data.get('Habitat', [])]  # Stripping whitespaces
             
             threatened_count = sum(1 for habitat in habitats if habitat in self.threatened_habitats)
-            proportion = threatened_count / len(habitats) if habitats else 0
+            proportion = threatened_count / len(habitats) if habitats else 0.0
             nx_graph.nodes[node]["Bucket"] = str(proportion)
 
             proportions.add(proportion)
@@ -74,7 +83,13 @@ class ThreatenedHabitats(AttackStrategy):
         # Step 5: Update proportions
         buckets = {bucket: (prop + x) / denominator for bucket, prop in buckets.items()}
 
+        # TODO: do something here about the feeding groups
+
+        print("Buckets after creation:", buckets)
+
         graph.set_buckets(buckets)
+
+        print("Buckets set in graph:", graph.buckets)
 
 class ThreatenedSpecies(AttackStrategy):
 
@@ -90,6 +105,10 @@ class ThreatenedSpecies(AttackStrategy):
         2. Compute the probability distribution.
         3. Set the buckets dict on the graph.
         4. Return the buckets dict.
+
+        random for the NAs according to proportion
+        separate bucket
+        -> ENUM for strategies
         """
         nx_graph = graph.get_nx_graph()
 

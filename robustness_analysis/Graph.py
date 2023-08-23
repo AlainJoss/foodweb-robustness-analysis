@@ -34,20 +34,6 @@ class Graph():
         return nx.reverse(g)
     
 
-    def filter_nodes_out(self, species_df: pd.DataFrame) -> None:
-        """
-        Removes nodes not present in the given species dataframe.
-        
-        Parameters:
-        -----------
-        species_df : pd.DataFrame
-            Dataframe containing species and their habitats.
-        """
-        for node in list(self.nx_graph.nodes).copy():
-            if node not in species_df['Taxon'].values:
-                self.nx_graph.remove_node(node)
-    
-
     def update_attributes(self, species_df: pd.DataFrame) -> None:
         """
         Updates node attributes based on the given species dataframe.
@@ -100,24 +86,7 @@ class Graph():
     def _compute_metrics(self) -> dict:
         return self.metric_calculator.compute_metrics(self.nx_graph)
     
-
-    """
-    Chooses a node based on certain criteria or configuration (like bucket configurations).
-    
-    Returns:
-    --------
-    Node (or appropriate type)
-        The chosen node.
-    """
-
-    """
-    def choose_node(self) -> str:
-
-        chosen_bucket = self._choose_bucket()
-        eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data['Bucket'] == chosen_bucket]
-        return random.choice(eligible_nodes)
-    """
-    
+        
     def choose_node(self) -> str:
         chosen_bucket = self._choose_bucket()
         eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data.get('Bucket') == chosen_bucket]
@@ -125,27 +94,22 @@ class Graph():
         if not eligible_nodes:
             print(f"No nodes found for bucket {chosen_bucket}. Removing bucket.")
             del self.buckets[chosen_bucket]  # Remove the bucket from the dictionary
+            
+            # Normalize the remaining probabilities
+            total_probability = sum(self.buckets.values())
+            for key in self.buckets:
+                self.buckets[key] /= total_probability
+
             return self.choose_node()  # Recursively choose another node
         return random.choice(eligible_nodes)
-    
+
     
     def _choose_bucket(self) -> str:
-        self._remove_empty_bucket()
-        if not self.buckets:  # If all buckets are empty
-            raise Exception("All buckets are empty. No nodes left to choose from.")
         buckets = list(self.buckets.keys())
         probabilities = list(self.buckets.values())
         return random.choices(buckets, weights=probabilities)[0]
-    
-
-    def _remove_empty_bucket(self) -> None:
-        for bucket in list(self.buckets.keys()):  # Use list() to avoid modifying dictionary while iterating
-            eligible_nodes = [node for node, data in self.nx_graph.nodes(data=True) if data.get('Bucket') == bucket]
-            if not eligible_nodes:
-                del self.buckets[bucket]  # Remove the bucket if no nodes are associated with it
+                
         
-
-
     def remove_node_and_dependents(self, node: str) -> None:
         """
         Removes the specified node from the graph and also removes any dependent nodes 
