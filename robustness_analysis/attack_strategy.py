@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 import networkx as nx
-from .graph import Graph
+import random
+import pandas as pd
+from constants import ALL_SPECIES_AND_FOOD_GROUPS
+from enum import Enum
+
 
 class AttackStrategy(ABC):
     """
@@ -10,48 +14,57 @@ class AttackStrategy(ABC):
     """
 
     @abstractmethod
-    def create_buckets(self, graph: Graph) -> dict:
+    def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
         pass
+
 
 class Random(AttackStrategy):
 
-    def create_buckets(self, graph: nx.DiGraph) -> dict:
-        for node in graph.nodes():
-            graph.nodes[node]['bucket'] = 'b1'
-        return {'b1': 1.0}
+    def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
+        pass  # No bucket creation needed for random strategy
+
     
+    def choose_node(self, nx_graph: nx.DiGraph) -> str:
+        return random.choice(list(nx_graph.nodes()))
+    
+
 class Sequential(AttackStrategy):
 
-    def create_buckets(self, graph: Graph) -> dict:
-        # Calculate out-degrees for each node
-        out_degrees = dict(graph.get_nx_graph().out_degree())
-        
-        # Sort nodes based on their out-degrees in descending order
-        sorted_nodes = sorted(out_degrees, key=out_degrees.get, reverse=True)
-        
-        # Assign each node to its own bucket based on its order
-        for index, node in enumerate(sorted_nodes):
-            graph.get_nx_graph().nodes[node]['bucket'] = f'b{index+1}'
+    class SortBy(Enum):
+        DEGREE = nx.degree_centrality
+        IN_DEGREE = nx.in_degree_centrality
+        OUT_DEGREE = nx.out_degree_centrality
+        CLOSENESS = nx.closeness_centrality
+        BETWEENNESS = nx.betweenness_centrality
+        EDGE_BETWEENNESS = nx.edge_betweenness_centrality
+        TROPHIC_LEVELS = nx.trophic_levels
 
-        # Return a dictionary where each node has its own bucket
-        return {f'b{index+1}': 1/len(sorted_nodes) for index in range(len(sorted_nodes))}
+    def __init__(self, metric: SortBy) -> None:
+        self.metric = metric
+        self.sorted_nodes = []
 
+    def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
+        metric_values = self.metric(nx_graph)
+        self.sorted_nodes = sorted(metric_values, key=metric_values.get, reverse=True)
+
+    def choose_node(self, nx_graph: nx.DiGraph) -> str:
+        return self.sorted_nodes.pop(0)
+    
 
 class ThreatenedHabitats(AttackStrategy):
 
-    def __init__(self, threatened_habitats: list = None, min_probability: int = 0.05):
-        if threatened_habitats is None:
-            self.threatened_habitats = []
-        else:
-            self.threatened_habitats = threatened_habitats
+    def __init__(self, threatened_habitats: list, min_probability: int = 0.05):
+        self.threatened_habitats = threatened_habitats
         self.min_probability = min_probability
+        self.buckets = {}
+        
 
-    def create_buckets(self, graph: Graph) -> dict:
+    def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> dict:
 
-        nx_graph = graph.get_nx_graph()
+        species_df = pd.read_csv(ALL_SPECIES_AND_FOOD_GROUPS, usecols=['Taxon', 'Habitat'])
+        self._set_habitats(nx_graph, species_df)
 
         proportions = set()
-
         for node, data in nx_graph.nodes(data=True):
             habitats = [habitat.strip() for habitat in data.get('Habitat', [])]  # Stripping whitespaces
             
@@ -61,12 +74,10 @@ class ThreatenedHabitats(AttackStrategy):
 
             proportions.add(proportion)
 
-
         # Step 2: Create buckets dictionary to return
         buckets = {}
         for prop in proportions:
             buckets[str(prop)] = prop
-
 
         # Step 3: Retrieve smallest proportion
         min_proportion = min(buckets.values())
@@ -83,23 +94,50 @@ class ThreatenedHabitats(AttackStrategy):
         # Step 5: Update proportions
         buckets = {bucket: (prop + x) / denominator for bucket, prop in buckets.items()}
 
-        # TODO: do something here about the feeding groups
+        # Step 6: Set buckets
+        self.buckets = buckets
 
-        print("Buckets after creation:", buckets)
 
-        graph.set_buckets(buckets)
+    def _set_habitats(self, nx_graph: nx.DiGraph, species_df: pd.DataFrame) -> None:
 
-        print("Buckets set in graph:", graph.buckets)
+        for _, row in species_df.iterrows():
+            specie = row['Taxon']
+            habitat_list = row['Habitat'].split(";")
+            
+            if specie in list(nx_graph.nodes).copy():
+                nx_graph.nodes[specie]['Habitat'] = habitat_list
+
+
+    def choose_node(self, graph: nx.DiGraph) -> str:
+        chosen_bucket = self._choose_bucket()
+        eligible_nodes = [node for node, data in graph.nodes(data=True) if data.get('Bucket') == chosen_bucket]
+        
+        if not eligible_nodes:
+            print(f"No nodes found for bucket {chosen_bucket}. Removing bucket.")
+            del self.buckets[chosen_bucket]  # Remove the bucket from the dictionary
+            
+            # Normalize the remaining probabilities
+            total_probability = sum(self.buckets.values())
+            for key in self.buckets:
+                self.buckets[key] /= total_probability
+
+            return self.choose_node()  # Recursively choose another node
+        return random.choice(eligible_nodes)
+    
+    
+    def _choose_bucket(self) -> str:
+        buckets = list(self.buckets.keys())
+        probabilities = list(self.buckets.values())
+        return random.choices(buckets, weights=probabilities)[0]
+
 
 class ThreatenedSpecies(AttackStrategy):
 
     def __init__(self, threatened_species: list = None):
-        if threatened_species is None:
-            self.threatened_species = []
-        else:
-            self.threatened_species = threatened_species
+        self.threatened_species = threatened_species
 
-    def create_buckets(self, graph: Graph) -> dict:
+
+    def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> dict:
         """
         1. Assign to each node the category according to the information in the nodes.
         2. Compute the probability distribution.
@@ -110,8 +148,7 @@ class ThreatenedSpecies(AttackStrategy):
         separate bucket
         -> ENUM for strategies
         """
-        nx_graph = graph.get_nx_graph()
 
         buckets = {}
 
-        graph.set_buckets(buckets)
+        self.buckets = buckets

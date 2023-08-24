@@ -1,4 +1,21 @@
 import networkx as nx
+from enum import Enum
+
+class Metrics(Enum):
+    GRAPH_SIZE = "graph_size"
+    AVG_IN_DEGREE = "avg_in_degree"
+    AVG_OUT_DEGREE = "avg_out_degree"
+    AVG_TOTAL_DEGREE = "avg_total_degree"
+    DENSITY = "density"
+    # LARGEST_WCC_SIZE = "largest_wcc_size"
+    # LARGEST_SSC_SIZE = "largest_ssc_size"
+    NUMBER_OF_WCCS = "number_of_wccs"
+    # NUMBER_OF_SCCS = "number_of_sccs"
+    # AVG_PAGERANK = "avg_pagerank"
+    # AVG_BETWEENNESS = "avg_betweenness"
+    # AVG_IN_CLOSENESS = "avg_in_closeness"
+    # AVG_SHORTEST_PATH_LSSC = "avg_shortest_path_lssc"
+    # AVG_TROPHIC_LEVEL = "avg_trophic_level"
 
 
 class MetricCalculator():
@@ -11,22 +28,7 @@ class MetricCalculator():
         List of metric method names available in this class.
     """
 
-    METRICS = [
-        "graph_size",
-        #"avg_in_degree",
-        #"avg_out_degree",
-        #"avg_total_degree",
-        #"density",
-        "largest_wcc_size",
-        #"largest_ssc_size",
-        "number_of_wccs",
-        #"number_of_sccs",
-        #"avg_pagerank",
-        #"avg_betweenness",
-        #"avg_in_closeness",
-        #"avg_shortest_path_lssc",
-        #"avg_trophic_level"  # NetworkXError: Trophic levels are only defined for graphs where every node has a path from a basal node (basal nodes are nodes with no incoming edges).
-    ]
+    METRICS = [metric.value for metric in Metrics]
 
 
     @classmethod

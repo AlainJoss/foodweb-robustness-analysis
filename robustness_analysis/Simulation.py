@@ -1,6 +1,6 @@
 from multiprocessing import Pool, cpu_count
-from .perturbation import Perturbation
-from .graph import Graph
+from perturbation import Perturbation
+from graph import Graph
 from collections import defaultdict
 
 
@@ -17,7 +17,7 @@ class Simulation():
     
     
     def _create_perturbations(self, k: int) -> list:
-        return [Perturbation(self.graphs[i]) for i in range(k)]
+        return [Perturbation(i, self.graphs[i]) for i in range(k)]
     
     
     def run(self) -> None:
@@ -39,7 +39,7 @@ class Simulation():
         Helper method to run a single perturbation.
         """
         perturbation.run()
-        return perturbation.graph.get_metric_evolution()
+        return perturbation.get_metric_evolution()
     
 
     def get_results(self) -> dict:

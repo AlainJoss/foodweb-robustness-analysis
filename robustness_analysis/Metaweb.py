@@ -122,7 +122,7 @@ class MetawebProcessor:
         return edges_df
     
 
-class Preparation(Enum):
+class ProcessingStrategy(Enum):
     """
     Stores different strategies that can be used to process the metaweb,
     before being used to create the graph.
@@ -147,11 +147,11 @@ class Metaweb:
         return self.edges
 
 
-    def prepare(self, preparation: Preparation, data_processor: MetawebProcessor):
-        if preparation == Preparation.GENERATE_AND_REMOVE:
+    def setup(self, strategy: ProcessingStrategy, data_processor: MetawebProcessor):
+        if strategy == ProcessingStrategy.GENERATE_AND_REMOVE:
             self._add_random_links(data_processor)
             self._remove_random_links(data_processor)
-        elif preparation == Preparation.REMOVE:
+        elif strategy == ProcessingStrategy.REMOVE:
             self._remove_random_links(data_processor)
 
 

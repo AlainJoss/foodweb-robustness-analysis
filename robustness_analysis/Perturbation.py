@@ -1,5 +1,4 @@
-from .graph import Graph
-import random
+from graph import Graph
 
 
 class Perturbation():
@@ -13,11 +12,12 @@ class Perturbation():
         The graph on which perturbations will be performed.
     """
 
-    def __init__(self, graph: Graph, save_nodes: bool = False) -> None:
+    def __init__(self, id, graph: Graph, save_nodes: bool = False) -> None:
+        self.id = id
         self.graph = graph
         # TODO: choose where to implement
         self.save_nodes = save_nodes
-        self.id = str(round(random.random(), 4))
+        self.metric_evolution = {}
 
 
     def run(self) -> None:
@@ -25,13 +25,21 @@ class Perturbation():
         Executes the perturbation on the graph. At each step, metrics are updated, 
         a node is chosen and removed, and any nodes which do not receive energy anymore are also removed.
         """
+        print("Id:", self.id, "starting simulation ...")
         while self.graph.size() > 0:
-            if self.graph.size() % 1000 == 0:
-                print("Id:", self.id, ", Size:", self.graph.size())
-            self.graph.update_metrics_evolution()
+            computed_metrics = self.graph.compute_metrics()
+            self._update_metric_evolution(computed_metrics)
             node = self.graph.choose_node()
             self.graph.remove_node_and_dependents(node)
 
+            if self.graph.size() % 1000 == 0:
+                print("Id:", self.id, "Size:", self.graph.size())
+
+
+    def _update_metric_evolution(self, computed_metrics: dict) -> None:
+        for key, value in computed_metrics.items():
+            self.metric_evolution.setdefault(key, []).append(value)
+    
 
     def get_metric_evolution(self) -> dict:
-        return self.graph.get_metric_evolution()
+        return self.metric_evolution
