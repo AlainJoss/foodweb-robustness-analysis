@@ -5,51 +5,50 @@ This project aims to decipher the intricacies of Switzerland's food web by analy
 ## 🌟 **Objective**
 
 The primary objective of this project is to:
-- Model the food web as a directed graph.
 - Apply various attack strategies to simulate perturbations.
-- Analyze and visualize the impact on graph properties.
+- Extract results for analysis.
 
 ## 📚 **Modules Overview**
 
-### 1. `Constants.py`
+### 1. `constants.py`
 - Houses constants and configurations used throughout the project.
 
-### 2. `AttackStrategy.py`
+### 2. `attack_strategy.py`
 - Defines various attack strategies for perturbing the graph.
 - Includes strategies like RANDOM, SEQUENTIAL, THREATENED_HABITATS, and THREATENED_SPECIES.
 
-### 3. `Metaweb.py`
+### 3. `metaweb.py`
 - The `Metaweb` class resides here, responsible for data acquisition and preprocessing.
 
-### 4. `Graph.py`
+### 4. `graph.py`
 - This module represents the food web using a directed graph.
 - Provides utilities for graph manipulation and metric computation.
 
-### 5. `MetricCalculator.py`
-- Contains the `MetricCalculator` class, which computes various metrics for a given graph.
+### 5. `metric_calculator.py`
+- Contains the MetricCalculator class responsible for computing various metrics on the graph.
 
-### 6. `Perturbation.py`
-- The `Perturbation` class implements node removal based on different strategies.
-- It records the trend of graph metrics over time, providing insights into the impact of perturbations.
+### 6. `perturbation.py`
+- Represents a perturbation process on a graph where nodes are removed, and metrics are updated at each step.
 
-### 7. `Simulation.py`
-- Orchestrates the entire simulation process, binding all other modules together for a cohesive workflow.
+### 7. `simulation.py`
+- The core simulation module that uses different attack strategies on the graph and computes metrics.
 
-## 📘 **Jupyter Notebooks**
+### 8. `random_simulation.py`
+- Specialized simulation using the random attack strategy.
 
-- **`perturubation.ipynb`**: A detailed deep dive into the perturbation process with visualizations.
+### 9. `sequential_simulation.py`
+- Specialized simulation using the sequential attack strategy.
 
-## 🔧 **Setting Up**
+### 10. `threatened_habitats_simulation.py`
+- Specialized simulation considering threatened habitats.
 
-1. Clone this repository to your local machine.
-2. Make sure you have the required libraries: NetworkX, Pandas, NumPy, and Matplotlib.
-3. Open the Jupyter notebook (`perturubation.ipynb`) to understand the workflow and run simulations.
+### 11. `threatened_species_simulation.py`
+- Specialized simulation focusing on threatened species.
 
-## 🚀 **Future Goals**
+### 12. `file_exporter.py`
+- Utility module for exporting data and results.
 
-- Further improve modularization and introduce dependency injection for enhanced maintainability.
-- Enhance simulation capabilities with more metrics and visualization tools.
+## 🔍 **Running the Simulations**
 
-## 📜 **License**
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+- Use the respective simulation files (`random_simulation.py`, `sequential_simulation.py`, etc.) to run simulations with different strategies.
+- Ensure all dependencies are installed and data files are available.
