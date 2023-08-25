@@ -1,7 +1,6 @@
 from graph import Graph
 from collections import defaultdict
 
-
 class Perturbation():
     """
     Represents a perturbation process on a graph. Nodes are removed from the graph 
@@ -9,22 +8,33 @@ class Perturbation():
     
     Attributes:
     -----------
-    graph : AbstractGraph
+    graph : Graph
         The graph on which perturbations will be performed.
     """
 
     def __init__(self, id, graph: Graph, save_nodes: bool = False) -> None:
+        """
+        Initializes the Perturbation with a graph and optional settings.
+        
+        Parameters:
+        -----------
+        id : int
+            Identifier for the perturbation.
+        graph : Graph
+            The graph on which perturbations will be performed.
+        save_nodes : bool, optional
+            Flag to track nodes during perturbations. Not intended for simulations. Default is False.
+        """
         self.id = id
         self.graph = graph
-        self.save_nodes = save_nodes  # feature that track nodes in single perturbations, not meant for simulations!
+        self.save_nodes = save_nodes
         self.metric_evolution = {}
 
 
     def run(self) -> None:
         """
-        Executes the perturbation on the graph. At each step, metrics are updated, 
-        a node is chosen and removed, and any nodes which do not receive energy anymore are also removed.
-        If the save_nodes flag is activated, the final dictionary will also track the primary extinctions. 
+        Executes the perturbation process on the graph. Metrics are updated at each step, 
+        nodes are chosen and removed, and any dependent nodes are also removed.
         """
         print("Id:", self.id, "starting simulation ...")
         while self.graph.size() > 0:
@@ -40,28 +50,56 @@ class Perturbation():
 
 
     def _update_metric_evolution(self, computed_metrics: dict) -> None:
+        """
+        Updates the metric evolution dictionary with the computed metrics.
+        
+        Parameters:
+        -----------
+        computed_metrics : dict
+            The metrics computed at the current step.
+        """
         for key, value in computed_metrics.items():
             self.metric_evolution.setdefault(key, []).append(value)
-    
+
 
     def get_metric_evolution(self) -> dict:
+        """
+        Returns the expanded metric evolution based on graph size.
+        
+        Returns:
+        --------
+        dict
+            The expanded metric evolution.
+        """
         expanded_metrics = self._expand_list_based_on_graph_size(self.metric_evolution)
         return expanded_metrics
 
 
     def _expand_list_based_on_graph_size(self, metric_evolution: dict) -> dict:
+        """
+        Expands the metric evolution list based on the graph size. This is useful 
+        for visualizing the evolution over consistent time steps.
+        
+        Parameters:
+        -----------
+        metric_evolution : dict
+            The original metric evolution dictionary.
+        
+        Returns:
+        --------
+        dict
+            The expanded metric evolution.
+        """
         graph_size_list = metric_evolution['graph_size']
         expanded_dict = defaultdict(list)
         
         for i in range(len(graph_size_list) - 1):
             diff = graph_size_list[i] - graph_size_list[i+1] - 1
             for key, value_list in metric_evolution.items():
-                for _ in range(diff + 1):  # +1 to include the current time step as well
+                for _ in range(diff + 1):
                     expanded_dict[key].append(value_list[i])
 
-        # Add the last values since they don't have a "next" value for comparison
         for key, value_list in metric_evolution.items():
             expanded_dict[key].append(value_list[-1])
 
         return expanded_dict
-

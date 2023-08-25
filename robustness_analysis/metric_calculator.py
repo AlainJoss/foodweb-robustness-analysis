@@ -2,58 +2,46 @@ import networkx as nx
 from enum import Enum
 
 class Metrics(Enum):
+    """
+    Enumeration of available graph metrics.
+    """
     GRAPH_SIZE = "graph_size"
     AVG_IN_DEGREE = "avg_in_degree"
     AVG_OUT_DEGREE = "avg_out_degree"
     AVG_TOTAL_DEGREE = "avg_total_degree"
     DENSITY = "density"
-    # LARGEST_WCC_SIZE = "largest_wcc_size"
-    # LARGEST_SSC_SIZE = "largest_ssc_size"
     NUMBER_OF_WCCS = "number_of_wccs"
-    # NUMBER_OF_SCCS = "number_of_sccs"
-    # AVG_PAGERANK = "avg_pagerank"
-    # AVG_BETWEENNESS = "avg_betweenness"
-    # AVG_IN_CLOSENESS = "avg_in_closeness"
-    # AVG_SHORTEST_PATH_LSSC = "avg_shortest_path_lssc"
-    # AVG_TROPHIC_LEVEL = "avg_trophic_level"
 
 
 class MetricCalculator():
     """
-    Utility class to calculate various metrics for directed graphs.
+    Utility class to compute various metrics for directed graphs.
     
     Attributes:
     -----------
     METRICS : list of str
         List of metric method names available in this class.
     """
-
-    METRICS = [metric.value for metric in Metrics]
-
-
-    @classmethod
-    def get_metric_names(cls) -> list:
-        return cls.METRICS
     
-
+    METRICS = [metric.value for metric in Metrics]
+    
     def compute_metrics(self, graph: nx.DiGraph) -> dict:
         """
-        Computes all the metrics listed in METRICS for a given graph.
+        Computes all the metrics listed in METRICS for the provided graph.
         
         Parameters:
         -----------
-        graph : AbstractGraph (or appropriate type)
-            The graph for which metrics are to be computed.
+        graph : nx.DiGraph
+            The graph for which metrics are to be calculated.
         
         Returns:
         --------
         dict
-            A dictionary with metric names as keys and computed values as values.
+            Dictionary with metric names as keys and computed values as associated values.
         """
         metric_results = {}
         
         for metric in self.METRICS:
-
             metric_function = getattr(self, metric)
             metric_results[metric] = metric_function(graph)
         

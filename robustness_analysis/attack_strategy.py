@@ -8,29 +8,63 @@ from enum import Enum
 
 class AttackStrategy(ABC):
     """
-    Abstract base class representing various strategies to attack or perturb a graph.
-    Implementations of this class should define methods to categorize nodes in a graph 
-    based on certain criteria or configurations.
+    Abstract base class for attack or perturbation strategies on a graph.
+    Derived classes should define methods to categorize or select nodes in the graph 
+    based on specific criteria or configurations.
     """
 
     @abstractmethod
     def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
+        """
+        Abstract method to setup the attack strategy for the given graph.
+        
+        Parameters:
+        -----------
+        nx_graph : nx.DiGraph
+            The directed graph for which the attack strategy is to be set up.
+        """
         pass
 
-
 class Random(AttackStrategy):
+    """
+    Represents a random attack strategy on the graph.
+    Nodes are chosen randomly for perturbation.
+    """
 
     def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
-        pass  # No bucket creation needed for random strategy
+        """
+        No setup required for the random strategy.
+        """
+        pass
 
     
     def choose_node(self, nx_graph: nx.DiGraph) -> str:
+        """
+        Chooses a node randomly from the graph.
+        
+        Parameters:
+        -----------
+        nx_graph : nx.DiGraph
+            The directed graph from which a node is to be chosen.
+        
+        Returns:
+        --------
+        str
+            The chosen node.
+        """
         return random.choice(list(nx_graph.nodes()))
     
 
 class Sequential(AttackStrategy):
+    """
+    Represents a sequential attack strategy on the graph.
+    Nodes are chosen based on a specific metric, in decreasing order of their values.
+    """
 
     class SortBy(Enum):
+        """
+        Enumeration for the different metrics based on which nodes can be sorted.
+        """
         DEGREE = nx.degree_centrality
         IN_DEGREE = nx.in_degree_centrality
         OUT_DEGREE = nx.out_degree_centrality
@@ -52,8 +86,22 @@ class Sequential(AttackStrategy):
     
 
 class ThreatenedHabitats(AttackStrategy):
+    """
+    Represents an attack strategy based on threatened habitats.
+    Nodes (species) residing in threatened habitats are chosen based on their respective probabilities.
+    """
 
     def __init__(self, threatened_habitats: list, min_probability: int = 0.05):
+        """
+        Initializes the ThreatenedHabitats attack strategy.
+
+        Parameters:
+        -----------
+        threatened_habitats : list
+            List of habitats that are considered threatened.
+        min_probability : int, optional
+            Minimum probability for a habitat to be chosen. Default is 0.05.
+        """
         self.threatened_habitats = threatened_habitats
         self.min_probability = min_probability
         self.buckets = {}
@@ -64,6 +112,7 @@ class ThreatenedHabitats(AttackStrategy):
         species_df = pd.read_csv(ALL_SPECIES_AND_FOOD_GROUPS, usecols=['Taxon', 'Habitat'])
         self._set_habitats(nx_graph, species_df)
 
+        # Step 1: Attach proportion to nodes and add to proportion to set of proportions
         proportions = set()
         for node, data in nx_graph.nodes(data=True):
             habitats = [habitat.strip() for habitat in data.get('Habitat', [])]  # Stripping whitespaces

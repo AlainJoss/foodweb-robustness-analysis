@@ -4,6 +4,7 @@ from metric_calculator import MetricCalculator
 from attack_strategy import AttackStrategy
 import copy
 
+
 class Graph():
     """
     Represents a directed graph with methods to perform various operations like 

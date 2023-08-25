@@ -1,3 +1,7 @@
+"""
+Module defining constants related to file paths and column names.
+"""
+
 FOODWEB_01 = '../../data/foodwebs/01_metaweb.csv'
 FOODWEB_02 = '../../data/foodwebs/02_metaweb_unrestrained.csv'
 FOODWEB_03 = '../../data/foodwebs/03_metaweb_restrained_conservative.csv'
