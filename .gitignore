@@ -3,3 +3,4 @@ Pipfile.lock
 .DS_Store
 __pycache__
 data/foodwebs/02_metaweb_unrestrained.csv
+documentation/presentation.pdf

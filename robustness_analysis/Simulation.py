@@ -2,6 +2,8 @@ from multiprocessing import Pool, cpu_count
 from perturbation import Perturbation
 from graph import Graph
 from file_exporter import export
+import shutil
+import os
 
 class Simulation():
     """
@@ -74,6 +76,8 @@ class Simulation():
         """
         print(">>> simulation started")
 
+        remove_results_dir()
+
         num_processes = cpu_count()
         
         with Pool(processes=num_processes) as pool:
@@ -101,3 +105,9 @@ class Simulation():
         metrics_evolution = perturbation.get_metric_evolution()
         export(metrics_evolution, f'perturbation_{perturbation.id}')
         return metrics_evolution
+    
+
+def remove_results_dir() -> None:
+    directory_path = "results"
+    if os.path.exists(directory_path):
+        shutil.rmtree(directory_path)
