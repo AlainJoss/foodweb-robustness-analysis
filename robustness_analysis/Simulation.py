@@ -27,10 +27,6 @@ class Simulation():
         # Parallelize with multiprocessing and capture metric evolutions
         with Pool(processes=num_processes) as pool:
             self.metric_evolution = pool.map(self._run_perturbation, self.perturbations)
-
-        # Expand each metric evolution
-        for idx, metric_evolution in enumerate(self.metric_evolution):
-            self.metric_evolution[idx] = self._expand_list_based_on_graph_size(metric_evolution)
     
         
     @staticmethod
@@ -58,20 +54,3 @@ class Simulation():
         averaged_dict = {key: [v / num_perturbations for v in value_list] for key, value_list in total_results.items()}
         
         return averaged_dict
-        
-
-    def _expand_list_based_on_graph_size(self, metric_evolution: dict) -> dict:
-        graph_size_list = metric_evolution['graph_size']
-        expanded_dict = defaultdict(list)
-        
-        for i in range(len(graph_size_list) - 1):
-            diff = graph_size_list[i] - graph_size_list[i+1] - 1
-            for key, value_list in metric_evolution.items():
-                for _ in range(diff + 1):  # +1 to include the current time step as well
-                    expanded_dict[key].append(value_list[i])
-
-        # Add the last values since they don't have a "next" value for comparison
-        for key, value_list in metric_evolution.items():
-            expanded_dict[key].append(value_list[-1])
-
-        return expanded_dict

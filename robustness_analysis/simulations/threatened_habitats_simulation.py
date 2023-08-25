@@ -29,5 +29,4 @@ if __name__ == "__main__":
 
     simulation_results = simulation.get_results()
 
-    export(simulation_results)
-    
+    export(simulation_results, "threatened_habitats_simulation")
