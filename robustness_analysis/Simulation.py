@@ -1,7 +1,6 @@
 from multiprocessing import Pool, cpu_count
 from perturbation import Perturbation
 from graph import Graph
-from collections import defaultdict
 from file_exporter import export
 
 class Simulation():
