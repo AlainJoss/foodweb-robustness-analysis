@@ -58,20 +58,31 @@ class Graph():
 
     def choose_node(self) -> str:
         return self.attack_strategy.choose_node(self.nx_graph)
+    
+
+    def _notify_nodes(self, removed_neighbors: set) -> set: 
+        self.attack_strategy.notify_nodes(removed_neighbors)
                 
         
-    def remove_node_and_dependents(self, node: str) -> None:
+    def remove_node_and_dependents(self, node: str) -> list:
         """
         Removes the specified node from the graph and also removes any dependent nodes 
         that might be affected by this removal (like isolated nodes).
         
         Parameters:
         -----------
-        node : Node (or appropriate type)
+        node : str
             The node to be removed.
+        
+        Returns:
+        -----------
+        removed_neighbors: list
+            The dependent nodes which have been removed.
         """
         k_level_neighbors = set(self.nx_graph.successors(node))
         self.nx_graph.remove_node(node)
+
+        removed_neighbors = set()
 
         # Explore neighbors level after level
         while len(k_level_neighbors) > 0:
@@ -98,3 +109,8 @@ class Graph():
                     break
 
             k_level_neighbors = new_level_neighbors - removed_neighbors
+
+            self._notify_nodes(removed_neighbors)
+
+        return list(removed_neighbors)
+        

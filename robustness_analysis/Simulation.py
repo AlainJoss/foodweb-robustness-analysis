@@ -2,6 +2,7 @@ from multiprocessing import Pool, cpu_count
 from perturbation import Perturbation
 from graph import Graph
 from collections import defaultdict
+from file_exporter import export
 
 class Simulation():
     """
@@ -17,7 +18,7 @@ class Simulation():
         List of metric evolutions for each perturbation.
     """
 
-    def __init__(self, graph: Graph, k: int) -> None:
+    def __init__(self, graph: Graph, k: int, save_nodes: bool = False) -> None:
         """
         Initializes the Simulation with graph copies and perturbations.
         
@@ -29,7 +30,7 @@ class Simulation():
             The number of graph copies and perturbations.
         """
         self.graphs = self._create_graph_copies(graph, k)
-        self.perturbations = self._create_perturbations(k)
+        self.perturbations = self._create_perturbations(k, save_nodes)
 
 
     def _create_graph_copies(self, graph: Graph, k: int) -> list:
@@ -51,7 +52,7 @@ class Simulation():
         return [graph.copy() for _ in range(k)]
     
 
-    def _create_perturbations(self, k: int) -> list:
+    def _create_perturbations(self, k: int, save_nodes: bool) -> list:
         """
         Creates k perturbations for the graph copies.
         
@@ -65,17 +66,21 @@ class Simulation():
         list
             A list of Perturbation instances.
         """
-        return [Perturbation(i, self.graphs[i]) for i in range(k)]
+        return [Perturbation(i, self.graphs[i], save_nodes) for i in range(k)]
     
 
     def run(self) -> None:
         """
         Runs the simulation in parallel for all perturbations using available CPU cores.
         """
+        print(">>> simulation started")
+
         num_processes = cpu_count()
         
         with Pool(processes=num_processes) as pool:
             self.metric_evolution = pool.map(self._run_perturbation, self.perturbations)
+
+        print(">>> the simulation has successfully concluded, all perturbations are saved in the results directory")
     
 
     @staticmethod
@@ -94,27 +99,6 @@ class Simulation():
             The metric evolution for the perturbation.
         """
         perturbation.run()
-        return perturbation.get_metric_evolution()
-
-
-    def get_results(self) -> dict:
-        """
-        Aggregates and averages the results from all perturbations.
-        
-        Returns:
-        --------
-        dict
-            The averaged metric evolution over all perturbations.
-        """
-        total_results = defaultdict(list)
-
-        for metric_evolution in self.metric_evolution:
-            for key, value_list in metric_evolution.items():
-                if key not in total_results:
-                    total_results[key] = [0] * len(value_list)
-                total_results[key] = [sum(x) for x in zip(total_results[key], value_list)]
-
-        num_perturbations = len(self.metric_evolution)
-        averaged_dict = {key: [v / num_perturbations for v in value_list] for key, value_list in total_results.items()}
-        
-        return averaged_dict
+        metrics_evolution = perturbation.get_metric_evolution()
+        export(metrics_evolution, f'perturbation_{perturbation.id}')
+        return metrics_evolution

@@ -19,5 +19,5 @@ def export(data: dict, filename: str, directory: str = 'results') -> None:
     full_directory = os.path.join(os.path.dirname(__file__), directory)
     os.makedirs(full_directory, exist_ok=True)
     results_path = os.path.join(full_directory, filename)
-    
+
     df.to_csv(results_path, index=False)

@@ -40,10 +40,11 @@ class MetricCalculator():
             Dictionary with metric names as keys and computed values as associated values.
         """
         metric_results = {}
+        DECIMAL_POS = 5  # decimal precision
         
         for metric in self.METRICS:
             metric_function = getattr(self, metric)
-            metric_results[metric] = metric_function(graph)
+            metric_results[metric] = round(metric_function(graph), DECIMAL_POS)  
         
         return metric_results
     

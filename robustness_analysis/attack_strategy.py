@@ -24,6 +24,26 @@ class AttackStrategy(ABC):
             The directed graph for which the attack strategy is to be set up.
         """
         pass
+    
+
+    def notify_nodes(self, nodes: set) -> None:
+        """
+        Notifies the attack strategy about nodes that have been removed from the graph. 
+        The attack strategy can then adjust its internal state accordingly, if required. 
+        For example, the Sequential strategy would remove these nodes from its list of 
+        sorted nodes, ensuring they are not selected for perturbation in future steps.
+
+        Note:
+        - The default behavior in the base class (AttackStrategy) is to do nothing (pass).
+        - The Sequential strategy overrides this method to provide custom behavior.
+
+        Parameters:
+        -----------
+        nodes : set
+            A set of nodes that have been removed from the graph.
+        """
+        pass
+
 
 class Random(AttackStrategy):
     """
@@ -77,12 +97,21 @@ class Sequential(AttackStrategy):
         self.metric = metric
         self.sorted_nodes = []
 
+
     def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> None:
         metric_values = self.metric(nx_graph)
         self.sorted_nodes = sorted(metric_values, key=metric_values.get, reverse=True)
 
+
     def choose_node(self, nx_graph: nx.DiGraph) -> str:
         return self.sorted_nodes.pop(0)
+    
+
+    def notify_nodes(self, nodes: set) -> None:
+        """
+        Takes out secondary removals from the sorted list of nodes.
+        """
+        self.sorted_nodes = [node for node in self.sorted_nodes if node not in nodes]
     
 
 class ThreatenedHabitats(AttackStrategy):
@@ -157,9 +186,9 @@ class ThreatenedHabitats(AttackStrategy):
                 nx_graph.nodes[specie]['Habitat'] = habitat_list
 
 
-    def choose_node(self, graph: nx.DiGraph) -> str:
+    def choose_node(self, nx_graph: nx.DiGraph) -> str:
         chosen_bucket = self._choose_bucket()
-        eligible_nodes = [node for node, data in graph.nodes(data=True) if data.get('Bucket') == chosen_bucket]
+        eligible_nodes = [node for node, data in nx_graph.nodes(data=True) if data.get('Bucket') == chosen_bucket]
         
         if not eligible_nodes:
             print(f"No nodes found for bucket {chosen_bucket}. Removing bucket.")
@@ -187,17 +216,7 @@ class ThreatenedSpecies(AttackStrategy):
 
 
     def setup_attack_strategy(self, nx_graph: nx.DiGraph) -> dict:
-        """
-        1. Assign to each node the category according to the information in the nodes.
-        2. Compute the probability distribution.
-        3. Set the buckets dict on the graph.
-        4. Return the buckets dict.
+        pass
 
-        random for the NAs according to proportion
-        separate bucket
-        -> ENUM for strategies
-        """
-
-        buckets = {}
-
-        self.buckets = buckets
+    def choose_node(self, nx_graph: nx.DiGraph) -> str:
+        pass
