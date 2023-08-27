@@ -139,7 +139,7 @@ class Metaweb:
     The procedures for adding and removing links are implemented by the MetawebProcessor.
     """
 
-    def __init__(self, csv: str, usecols: list):
+    def __init__(self, csv: str, usecols: list) -> None:
         self.edges = pd.read_csv(csv, usecols=usecols)
 
 
@@ -147,7 +147,7 @@ class Metaweb:
         return self.edges
 
 
-    def setup(self, strategy: ProcessingStrategy, data_processor: MetawebProcessor):
+    def setup(self, strategy: ProcessingStrategy, data_processor: MetawebProcessor) -> None:
         if strategy == ProcessingStrategy.GENERATE_AND_REMOVE:
             self._add_random_links(data_processor)
             self._remove_random_links(data_processor)
@@ -155,7 +155,7 @@ class Metaweb:
             self._remove_random_links(data_processor)
 
 
-    def _add_random_links(self, data_processor: MetawebProcessor):
+    def _add_random_links(self, data_processor: MetawebProcessor) -> None:
         new_edges = data_processor.generate_links()
         self.edges = pd.concat([self.edges, new_edges]).reset_index(drop=True)
 

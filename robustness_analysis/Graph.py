@@ -34,14 +34,6 @@ class Graph():
 
     def setup_attack_strategy(self) -> None:
         self.attack_strategy.setup_attack_strategy(self.nx_graph)
-
-    
-    def get_nx_graph(self) -> nx.DiGraph:
-        return self.nx_graph
-    
-
-    def set_buckets(self, buckets: dict) -> None:
-        self.buckets = buckets
     
     
     def size(self) -> int:
@@ -59,10 +51,6 @@ class Graph():
     def choose_node(self) -> str:
         return self.attack_strategy.choose_node(self.nx_graph)
     
-
-    def _notify_nodes(self, removed_neighbors: set) -> set: 
-        self.attack_strategy.notify_nodes(removed_neighbors)
-                
         
     def remove_node_and_dependents(self, node: str) -> list:
         """
@@ -114,3 +102,7 @@ class Graph():
 
         return list(removed_neighbors)
         
+
+    def _notify_nodes(self, removed_neighbors: set) -> None: 
+        self.attack_strategy.notify_nodes(removed_neighbors)
+                

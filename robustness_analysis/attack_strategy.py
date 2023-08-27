@@ -24,7 +24,10 @@ class AttackStrategy(ABC):
             The directed graph for which the attack strategy is to be set up.
         """
         pass
-    
+
+    @abstractmethod
+    def choose_node(self, nx_graph: nx.DiGraph) -> str:
+        pass
 
     def notify_nodes(self, nodes: set) -> None:
         """

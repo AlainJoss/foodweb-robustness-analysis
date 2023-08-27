@@ -12,7 +12,7 @@ class Perturbation():
         The graph on which perturbations will be performed.
     """
 
-    def __init__(self, id, graph: Graph, save_nodes: bool) -> None:
+    def __init__(self, id: float, graph: Graph, save_nodes: bool) -> None:
         """
         Initializes the Perturbation with a graph and optional settings.
         
